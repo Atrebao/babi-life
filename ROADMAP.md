@@ -2,6 +2,15 @@
 
 Une version = un épisode TikTok. Chaque version apporte **une seule grosse nouveauté** facile à montrer en vidéo, se termine par un tag Git et une entrée dans le CHANGELOG.
 
+## Ton & écriture
+
+Le jeu reste **drôle avant tout**. L'humour ivoirien sert à montrer les réalités de la vie à Babi (embouteillages, délestage, prix qui montent, files d'attente, amphis bondés…) : on en rit pour mieux les dénoncer.
+
+- On parle comme à Babi : nouchi, expressions du quotidien, Vieux Père Ali comme narrateur
+- On se moque des situations, jamais d'une ethnie, d'une religion ou d'une personne réelle
+- Chaque choix a une conséquence drôle **et** une petite vérité (le conseil du Vieux Père)
+- Les textes s'accordent selon que le joueur est un gars ou une go
+
 ## Règles de commit
 
 Format : `type: description courte` ([Conventional Commits](https://www.conventionalcommits.org/fr/))
@@ -43,39 +52,49 @@ git push origin main --tags
 - `feat: scène soir — maquis avec les gars`
 - `feat: transitions entre les scènes (fondu + nom du quartier)`
 
-### v0.5.0 — Le jour et la nuit
+### v0.5.0 — La vie d'étudiant
+*Épisode : « Étudiant à Babi : le mode le plus difficile du jeu » (cible : les étudiants de Cocody, Abobo-Adjamé, Bouaké…)*
+- `feat: choix du statut sur la carte d'identité — Travailleur ou Étudiant(e)`
+- `feat: nouvelle jauge 📚 Moyenne pour le mode étudiant`
+- `feat: scène arrêt de bus — la file d'attente qui ne bouge pas, le bus déjà plein qui passe sans s'arrêter`
+- `feat: woro-woro dont le prix augmente sans prévenir (« C'est 300 maintenant, c'est le carburant »)`
+- `feat: scène amphi bondé — assis par terre, sur la fenêtre, ou garder la place d'un ami`
+- `feat: prof absent après 2h d'attente`
+- `feat: TD à rendre vs délestage pendant les révisions`
+- `feat: cité U — chambre partagée, cotisation pour le gaz`
+- `feat: bourse qui tarde et budget garba de fin de mois`
+- `feat: polycopiés à acheter et photocopie du cours d'un camarade`
+- `feat: jour d'exam — réviser toute la nuit ou dormir ?`
+
+### v0.6.0 — Le jour et la nuit
 *Épisode : « J'ai ajouté le jour et la nuit à mon jeu »*
 - `feat: horloge qui avance à chaque choix`
 - `style: ciel qui change matin / midi / soir / nuit`
 - `feat: lampadaires et fenêtres allumées la nuit`
 - `feat: écran bilan de fin de journée`
 
-### v0.6.0 — Survivre 7 jours
+### v0.7.0 — Survivre 7 jours
 *Épisode : « Peux-tu tenir 7 jours à Abidjan ? » (défi pour les abonnés)*
-- `feat: game over si Argent, Énergie ou Santé tombe à 0`
+- `feat: game over si Argent, Énergie ou Santé tombe à 0 (ou Moyenne pour les étudiants)`
 - `feat: compteur de jours et meilleur score`
-- `feat: événements aléatoires (délestage, pluie, contrôle de police, panne de gbaka)`
+- `feat: événements aléatoires (délestage, pluie, contrôle de police, panne de gbaka, grève)`
 - `feat: carte bilan à partager (capture pour TikTok)`
 - `feat: sauvegarde automatique de la partie`
 
-### v0.7.0 — Gombo & logement
-*Épisode : « Trouver un travail à Babi, c'est pas facile »*
-- `feat: chercher un travail (vendeur, chauffeur woro-woro, informaticien…)`
+### v0.8.0 — Gombo, logement & communes
+*Épisode : « Trouver un travail et un logement à Babi, c'est pas facile »*
+- `feat: chercher un travail (vendeur, chauffeur woro-woro, informaticien…) ou un petit job d'étudiant`
 - `feat: salaire et gombos à côté`
-- `feat: louer une chambre, un studio, puis une villa à Cocody`
+- `feat: louer une chambre à Yop, un studio, puis une villa à Cocody`
+- `feat: carte d'Abidjan avec les quartiers (Cocody, Treichville, Marcory, Abobo)`
+- `feat: débloque le choix du quartier sur la carte d'identité`
 - `feat: objets à acheter (téléphone, moto, costume)`
 
-### v0.8.0 — Son & ambiance
+### v0.9.0 — Son & ambiance
 *Épisode : « J'ai mis du coupé-décalé dans mon jeu »*
 - `feat: musique d'ambiance et bouton son on/off`
 - `feat: bruitages (klaxon, moteur gbaka, notification)`
 - `feat: vibration du téléphone sur les gros événements`
-
-### v0.9.0 — Les communes
-*Épisode : « Yop, Cocody ou Abobo : où vivre ? »*
-- `feat: carte d'Abidjan avec les quartiers`
-- `feat: scènes Cocody, Treichville, Marcory, Abobo`
-- `feat: débloque le choix du quartier sur la carte d'identité`
 
 ### v1.0.0 — Lancement public
 *Épisode : « Mon jeu est jouable, lien en bio »*
