@@ -7,6 +7,10 @@ Inspiré de Lagos Life (Nigeria), mais avec la vie et les vannes de Babi.
 
 Le projet est construit pas à pas, en public, sur TikTok : chaque version du jeu correspond à un épisode.
 
+## ▶ Jouer
+
+**https://atrebao.github.io/babi-life/** (mis à jour automatiquement à chaque envoi sur `main`)
+
 ## Jouer en local
 
 Aucune installation : ouvre `index.html` dans un navigateur.

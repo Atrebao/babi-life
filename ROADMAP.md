@@ -94,6 +94,7 @@ Trois vies jouables (travailleur, étudiant, apprenti), une semaine à survivre,
 - `feat: PWA installable sur le téléphone`
 - `feat: plus d'options de personnalisation (coiffure, tenue, accessoires)`
 - `chore: page de partage (aperçu du lien sur WhatsApp / TikTok)`
+- ✅ Jeu déjà en ligne sur GitHub Pages : https://atrebao.github.io/babi-life/
 
 ### v1.1.0 — La vie de djassaman
 *Épisode : « Mise à jour 1.1 : les djassamans débarquent »*
