@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.0 — Une journée à Babi
+
+- Une vraie journée en 5 scènes : Yop à 7h, réunion au Plateau, midi chez Tantie Garba, Tantie Bijou la kpakpato, afterwork au maquis
+- 3 nouveaux décors : le bureau du Plateau (clim « PANNE 2019 »), le stand de Tantie Garba, le maquis « Le Temps des Boss » la nuit
+- Nouveaux personnages : Monsieur le Directeur, Tantie Bijou, Tantie Garba, les collègues
+- Délestage pendant la réunion : la salle passe dans le noir
+- Les choix ont des conséquences sur la suite (en retard si tu restes dormir, choix verrouillés sans assez de wari)
+- Transitions entre les scènes avec le lieu et l'heure
+- Réactions des personnages en émojis
+- Bilan de fin de journée par Vieux Père Ali
+- Les dialogues et les scènes sont rangés dans `data/`
+
 ## v0.3.0 — Bienvenue à Babi
 
 - Introduction par Vieux Père Ali, le guide du quartier, en nouchi

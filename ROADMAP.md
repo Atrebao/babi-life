@@ -31,12 +31,12 @@ Format : `type: description courte` ([Conventional Commits](https://www.conventi
 | `docs` | README, ROADMAP, CHANGELOG |
 | `chore` | config, outillage, version |
 
-Fin de version (exemple pour la v0.4.0) :
+Fin de version (exemple pour la v0.5.0) :
 
 ```bash
-# 1. mettre VERSION = "0.4.0" dans script.js et compléter CHANGELOG.md
-git commit -am "chore: version 0.4.0"
-git tag -a v0.4.0 -m "v0.4.0 — Une journée à Babi"
+# 1. mettre VERSION = "0.5.0" dans script.js et compléter CHANGELOG.md
+git commit -am "chore: version 0.5.0"
+git tag -a v0.5.0 -m "v0.5.0 — La vie d'étudiant"
 git push origin main --tags
 ```
 
@@ -47,19 +47,9 @@ git push origin main --tags
 | v0.1.0 | Prototype : 4 jauges, une situation, 3 choix | « Je crée le Lagos Life ivoirien » |
 | v0.2.0 | Refonte 2D : scène animée de Yopougon, gbaka, Yango | « Mon jeu ressemblait à un formulaire, regardez maintenant » |
 | v0.3.0 | Vieux Père Ali, création du perso, tutoriel, vannes en nouchi | « Créez votre perso de Babi » |
+| v0.4.0 | Une journée complète : réunion, garba, kpakpato, maquis | « Ton perso doit survivre à toute une journée » |
 
 ## 🔜 À venir
-
-### v0.4.0 — Une journée à Babi
-*Épisode : « Ton perso doit survivre à toute une journée »*
-- `refactor: sépare les situations dans un fichier data/scenes.js`
-- `feat: moteur de scènes qui enchaîne les situations`
-- `feat: scène Plateau — la réunion et le délestage`
-- `feat: scène midi — garba, alloco ou le cahier de Tantie Garba`
-- `feat: scène Tantie Bijou la kpakpato`
-- `feat: scène soir — l'afterwork au maquis`
-- Scénarios : [travailleur.md](docs/vies/travailleur.md) n°2, 3, 5 et 7 (les n°4, 6 et 8 viendront avec les jours, en v0.8)
-- `feat: transitions entre les scènes (fondu + nom du quartier)`
 
 ### v0.5.0 — La vie d'étudiant
 *Épisode : « Étudiant à Babi : le mode le plus difficile du jeu » (cible : les étudiants de Cocody, Abobo-Adjamé, Bouaké…)*
