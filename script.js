@@ -1,6 +1,5 @@
 const VERSION = "0.3.0";
 const SPEED = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0.05 : 1;
-const NBSP = " ";
 
 const INITIAL_STATE = { argent: 10000, energie: 100, sante: 100, respect: 50 };
 
@@ -31,82 +30,6 @@ const SPEAKERS = {
 
 const player = { name: "", gender: "gars", skin: 1, outfit: 0 };
 const g = (gars, go) => (player.gender === "go" ? go : gars);
-
-const INTRO = [
-  `Ehhh${NBSP}! On dit quoi${NBSP}? Bienvenue à Babi, la ville où même le soleil arrive en retard à cause des embouteillages.`,
-  `Moi c'est Vieux Père Ali. 40 ans à Yop. Je connais tous les maquis, tous les gbakas… et même les nids de poule par leur prénom.`,
-  `Avant de te lâcher dans Babi, faut qu'on fasse ta carte d'identité. Et c'est gratuit hein, même pas besoin de photo${NBSP}!`,
-];
-
-const tutorial = () => [
-  {
-    target: null,
-    text: `${player.name}${NBSP}! Hum, ça c'est un nom de quelqu'un qui va réussir. Bon, écoute bien, je vais te montrer comment Babi fonctionne.`,
-  },
-  {
-    target: '[data-stat="argent"]',
-    text: `Ça, c'est ton wari${NBSP}: 10${NBSP}000 FCFA. À Babi, l'argent c'est comme le courant${NBSP}: le délestage peut tomber à tout moment.`,
-  },
-  {
-    target: '[data-stat="energie"]',
-    text: `Ton énergie ⚡. Quand ça finit, même pour crier «${NBSP}Apprenti, à côté${NBSP}!${NBSP}» dans le gbaka devient difficile.`,
-  },
-  {
-    target: '[data-stat="sante"]',
-    text: `Ta santé ❤️. Le garba c'est bon, mais garba matin, midi et soir… ton corps va porter plainte.`,
-  },
-  {
-    target: '[data-stat="respect"]',
-    text: `Ton respect ⭐. À Babi, si on te prend pour un petit, c'est fini${NBSP}: même les enfants du quartier vont t'envoyer acheter du pain.`,
-  },
-  {
-    target: null,
-    text: `Chaque choix fait bouger tes jauges. Si une jauge tombe à zéro… ça va chauffer. Allez, on est ensemble${NBSP}! Ta journée commence.`,
-  },
-];
-
-const SCENE = {
-  time: "07:00",
-  text: () =>
-    `${player.name}, ton réveil sonne pour la 3e fois. Réunion importante au Plateau à 9h, mais dehors c'est giga embouteillage${NBSP}: même les piétons sont bloqués. On fait comment${NBSP}?`,
-  next: "la réunion avec le boss au Plateau…",
-  choices: [
-    {
-      id: "gbaka",
-      icon: "🚐",
-      label: "Prendre le Gbaka",
-      quip: "Pas cher, mais tu vas sentir la sueur des autres",
-      time: "08:50",
-      effects: { argent: -500, energie: -30, respect: 5 },
-      result: () =>
-        `L'apprenti t'a ${g("coincé", "coincée")} entre une tantie et son sac de piment. Chemise froissée, mais tu es ${g("arrivé", "arrivée")} à l'heure. Petit à petit, l'oiseau fait son nid${NBSP}!`,
-      advice: () => "Le gbaka, c'est l'école de la vie. Aujourd'hui tu as eu ton diplôme.",
-    },
-    {
-      id: "yango",
-      icon: "🚕",
-      label: "Prendre un Yango",
-      quip: "Clim + zouglou, mais ton wari va pleurer",
-      time: "08:25",
-      effects: { argent: -4000, energie: 0, respect: 20 },
-      result: () =>
-        `Clim à fond, zouglou à la radio. Tu descends devant le bureau comme ${g("un vrai boucantier", "une vraie boucantière")}. Même le gardien t'a ${g("salué", "saluée")} deux fois${NBSP}!`,
-      advice: () =>
-        `Hum, ${g("boucantier", "boucantière")}${NBSP}! Mais 4${NBSP}000 tous les matins… à la fin du mois tu vas manger quoi${NBSP}?`,
-    },
-    {
-      id: "sleep",
-      icon: "😴",
-      label: "Rester dormir",
-      quip: "Le lit est doux… le boss un peu moins",
-      time: "10:30",
-      effects: { argent: 0, energie: 20, respect: -40 },
-      result: () =>
-        `Tu as dormi comme un bébé. Mais au réveil${NBSP}: 12 appels manqués du boss. C'est gâté dêh${NBSP}!`,
-      advice: () => `Dormir c'est bon. Mais le loyer, lui, il ne dort pas hein${NBSP}!`,
-    },
-  ],
-};
 
 const $ = (id) => document.getElementById(id);
 
