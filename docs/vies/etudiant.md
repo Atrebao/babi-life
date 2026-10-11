@@ -34,6 +34,7 @@ Elle commence à 10. En dessous de 10, c'est le rattrapage. À 0, c'est retour a
 
 - Le Délégué qui annonce « Le prof arrive ! » toutes les 30 minutes
 - Le cousin « de passage » à la cité U qui ne part jamais
+- « La bourse va tomber cette semaine » (elle ne tombe jamais cette semaine)
 - Junior qui doit 2 000 F à tout le monde, mais qui a toujours du crédit pour appeler
 - Doc et ses conseils de vieux sage… depuis 7 ans en licence
 

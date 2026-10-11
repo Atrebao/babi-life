@@ -24,6 +24,7 @@ L'objectif du jour : **25 000 F** à rendre au patron le soir. Tout ce qui dépa
 
 - **Vieux Kader** : le chauffeur. Ne parle jamais, klaxonne tout le temps. Son klaxon a 12 mélodies différentes
 - **Le Patron** : le propriétaire du gbaka. Ne monte jamais dedans, mais compte chaque pièce du versement
+- **Les gars de la gare (gnambros)** : réclament le « ticket » à chaque départ. Le ticket n'existe pas
 - **Petit Ballo** : l'apprenti du gbaka rival « Grâce Divine ». Crie plus fort que toi et vole tes clients avec le sourire
 - **Tantie Akissi** : vendeuse au marché d'Adjamé, monte avec 6 sacs, 2 bassines et paie pour une seule place
 - **Le monsieur en cravate** : négocie le prix comme s'il achetait une villa
@@ -92,7 +93,20 @@ Situation : Petit Ballo, l'apprenti du « Grâce Divine », s'est garé juste de
 
 👴🏾 Vieux Père : « La route est longue, il y a des clients pour tout le monde. Mais il faut quand même se lever tôt. »
 
-### 5. La grosse pluie
+### 5. Les gars de la gare
+📍 Gare d'Adjamé · 10h00
+
+Situation : trois gars s'approchent du gbaka. « Le ticket. » Tu demandes quel ticket. « Le ticket là. » Il n'y a pas de ticket. Il y a juste eux.
+
+| Choix | Effets | Résultat |
+|-------|--------|----------|
+| 💸 Payer le « ticket » | 🎯 −2 000 | Ils sont partis contents. Ils reviennent au prochain départ. C'est un abonnement |
+| 🗣️ Négocier | ⚡ −15 · 🎯 −1 000 · ⭐ +10 | 20 minutes de discussion. Ils ont accepté 1 000. Tu es devenu(e) un(e) diplomate |
+| 📢 Appeler Vieux Kader | ⭐ +5 · 🎯 −2 000 | Vieux Kader est descendu, il a regardé les gars… puis il a payé. Il ne parle jamais, il paie |
+
+👴🏾 Vieux Père : « Le ticket qui n'existe pas, c'est celui qui coûte le plus cher. »
+
+### 6. La grosse pluie
 📍 Autoroute · 11h00
 
 Situation : le ciel s'ouvre d'un coup. La pluie tombe si fort que la route devient une rivière. Et le toit du « Dieu Merci » goutte pile sur la tête du monsieur en cravate.
@@ -105,7 +119,7 @@ Situation : le ciel s'ouvre d'un coup. La pluie tombe si fort que la route devie
 
 👴🏾 Vieux Père : « À Babi, quand il pleut, tout le monde court. Le débrouillard, lui, il vend des sachets. »
 
-### 6. La panne
+### 7. La panne
 📍 Autoroute du Nord · 13h00
 
 Situation : *Pof !* Le moteur s'arrête en pleine voie. Fumée blanche. Vieux Kader soupire et dit son seul mot de la journée : « Poussez. »
@@ -118,7 +132,7 @@ Situation : *Pof !* Le moteur s'arrête en pleine voie. Fumée blanche. Vieux Ka
 
 👴🏾 Vieux Père : « À Babi, un gbaka ne tombe jamais vraiment en panne. Il prend juste une pause. »
 
-### 7. Tantie Akissi et ses bagages
+### 8. Tantie Akissi et ses bagages
 📍 Marché d'Adjamé · 16h00
 
 Situation : Tantie Akissi arrive avec 6 sacs, 2 bassines, un régime de banane et… un poulet vivant. « C'est une place hein, mon fils. »
@@ -131,7 +145,7 @@ Situation : Tantie Akissi arrive avec 6 sacs, 2 bassines, un régime de banane e
 
 👴🏾 Vieux Père : « Respecte les tanties du marché. Ce sont elles qui nourrissent Babi. »
 
-### 8. Le versement du soir
+### 9. Le versement du soir
 📍 Chez le Patron · 21h00
 
 Situation : la journée est finie. Tu comptes ta recette : il manque 4 000 F pour faire les 25 000. Le Patron compte déjà ses billets avec la langue.

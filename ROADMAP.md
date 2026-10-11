@@ -8,7 +8,7 @@ Le jeu reste **drôle avant tout**. L'humour ivoirien sert à montrer les réali
 
 - On parle comme à Babi : nouchi, expressions du quotidien, Vieux Père Ali comme narrateur
 - On se moque des situations, jamais d'une ethnie, d'une religion ou d'une personne réelle
-- **Aucun sujet sur l'État, la politique ou les autorités** (police, mairie, administration…). C'est un jeu : on reste sur le quotidien des gens
+- **Aucun sujet sur l'État, la politique ou les autorités** (police, mairie…). C'est un jeu : on reste sur le quotidien des gens. Restent autorisés comme galères du quotidien : le délestage, la bourse, les gnambros
 - Avec les petits métiers (apprentis, djassamans…), on rit **avec** eux, pas **d'eux** : ce sont les débrouillards de Babi
 - Chaque choix a une conséquence drôle **et** une petite vérité (le conseil du Vieux Père)
 - Les textes s'accordent selon que le joueur est un gars ou une go
@@ -71,7 +71,7 @@ git push origin main --tags
 - `feat: prof absent après 2h d'attente`
 - `feat: TD à rendre vs délestage pendant les révisions`
 - `feat: cité U — chambre partagée, cotisation pour le gaz`
-- `feat: la bourse tombe — économiser ou faire la fête ?`
+- `feat: la bourse qui tarde… puis qui tombe — économiser ou faire la fête ?`
 - `feat: polycopiés à acheter et photocopie du cours d'un camarade`
 - `feat: jour d'exam — réviser toute la nuit ou dormir ?`
 - Scénarios : [etudiant.md](docs/vies/etudiant.md)
@@ -91,6 +91,7 @@ git push origin main --tags
 - `feat: « Y'a pas monnaie » — rendre la monnaie… ou pas`
 - `feat: client qui négocie le prix et client qui crie « À côté ! » au mauvais moment`
 - `feat: Petit Ballo et le gbaka rival qui vole tes clients`
+- `feat: les gnambros de la gare et leur « ticket » qui n'existe pas`
 - `feat: la grosse pluie — le gbaka qui devient bateau`
 - `feat: gbaka en panne, tout le monde descend pousser`
 - `feat: réveil à 4h30, dodo sur la banquette`
