@@ -3,6 +3,8 @@
 Mini-jeu de simulation de vie en 2D, pensé pour mobile, qui se passe à Abidjan.
 Chaque choix du quotidien (gbaka, Yango, maquis…) fait bouger tes jauges : **Argent**, **Énergie**, **Santé** et **Respect**.
 
+Inspiré de Lagos Life (Nigeria), mais avec la vie et les vannes de Babi.
+
 Le projet est construit pas à pas, en public, sur TikTok : chaque version du jeu correspond à un épisode.
 
 ## Jouer en local

@@ -26,7 +26,7 @@ git push origin main --tags
 ## ✅ Déjà sorti
 
 - **v0.1.0 — Prototype** : 4 jauges, une situation, 3 choix
-- **v0.2.0 — Refonte 2D** : scène animée de Yopougon, cinématiques, HUD de jeu
+- **v0.2.0 — Refonte 2D** : scène animée de Yopougon, intro avec Vieux Père Ali, création du perso, tutoriel, vannes en nouchi
 
 ## 🔜 À venir
 
@@ -68,6 +68,12 @@ git push origin main --tags
 - `feat: scènes Cocody, Treichville, Marcory, Abobo`
 - `feat: choix du quartier de départ (prix et ambiance différents)`
 
+### v0.8.5 — Gombo & logement
+*Épisode : « Trouver un travail à Babi, c'est pas facile »*
+- `feat: chercher un travail (vendeur, chauffeur woro-woro, informaticien…)`
+- `feat: salaire et gombos à côté`
+- `feat: louer une chambre, un studio, puis une villa à Cocody`
+
 ### v0.9.0 — Imprévus
 *Épisode : « Les galères de Babi dans mon jeu »*
 - `feat: événements aléatoires (coupure de courant, pluie, contrôle de police, panne de gbaka)`
@@ -77,11 +83,16 @@ git push origin main --tags
 *Épisode : « Mon jeu est jouable, lien en bio »*
 - `feat: PWA installable sur le téléphone`
 - `chore: déploiement GitHub Pages`
-- `feat: personnalisation du personnage`
+- `feat: plus d'options de personnalisation (coiffure, tenue, accessoires)`
+
+### v1.x — Babi en ligne
+*Comme Lagos Life : jouer avec les autres*
+- `feat: compte joueur et sauvegarde en ligne`
+- `feat: voir les autres joueurs dans le quartier`
+- `feat: classement des plus grands boucantiers`
 
 ## 💡 Idées en vrac
 
-- Personnalisation du perso (coiffure, tenue)
 - Réputation par quartier
 - Mini-jeux (négocier avec l'apprenti, esquiver les nids de poule)
 - Choix proposés par les abonnés TikTok
