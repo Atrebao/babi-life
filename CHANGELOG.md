@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.5.0 — La vie d'étudiant
+
+- Nouveau : choisis ta vie sur la carte d'identité — 💼 Travailleur ou 🎓 Étudiant(e) (🔒 Apprenti et 🔒 Djassaman arrivent bientôt)
+- Nouvelle jauge 📚 Moyenne sur 20 pour les étudiants
+- Une journée complète à la fac : l'arrêt de bus à 6h, l'amphi bondé, Dr Yao absent, le polycopié à 3 000 F, le TD pendant le délestage à la cité U
+- 4 nouveaux décors : l'arrêt de bus de Yop, l'amphi A (500 places, 1 500 étudiants), la cabine photocopie du campus, la chambre 214 de la cité U
+- Nouveaux personnages : le Délégué, Doc (7e année de licence), la vendeuse de polys, le cousin « de passage », la file d'attente
+- Le bus « BABI BUS · FAC » qui passe plein sans s'arrêter, le woro-woro à 500 « c'est le carburant », la course après le bus
+- Bilan de fin de journée selon ta moyenne
+- Bouton « Changer de vie » en fin de journée
+- Chaque vie a son fichier dans `data/vies/`
+
 ## v0.4.0 — Une journée à Babi
 
 - Une vraie journée en 5 scènes : Yop à 7h, réunion au Plateau, midi chez Tantie Garba, Tantie Bijou la kpakpato, afterwork au maquis

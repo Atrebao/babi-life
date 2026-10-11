@@ -16,7 +16,7 @@ Pour tester en mode mobile, utilise les outils développeur de ton navigateur (v
 
 - HTML, CSS, JavaScript natifs, sans framework ni build
 - Scène 2D en SVG animée avec CSS et la Web Animations API
-- Textes du jeu dans `data/` : `dialogues.js` (intro, tutoriel) et `scenes.js` (scènes de la journée, personnages)
+- Textes du jeu dans `data/` : `dialogues.js` (intro, tutoriel), `cast.js` (personnages) et `vies/` (une journée par vie : `travailleur.js`, `etudiant.js`)
 - Univers et scénarios de chaque vie dans [docs/vies/](docs/vies/README.md)
 - Polices : Baloo 2 et Nunito (Google Fonts)
 

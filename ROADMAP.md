@@ -31,12 +31,12 @@ Format : `type: description courte` ([Conventional Commits](https://www.conventi
 | `docs` | README, ROADMAP, CHANGELOG |
 | `chore` | config, outillage, version |
 
-Fin de version (exemple pour la v0.5.0) :
+Fin de version (exemple pour la v0.6.0) :
 
 ```bash
-# 1. mettre VERSION = "0.5.0" dans script.js et compléter CHANGELOG.md
-git commit -am "chore: version 0.5.0"
-git tag -a v0.5.0 -m "v0.5.0 — La vie d'étudiant"
+# 1. mettre VERSION = "0.6.0" dans script.js et compléter CHANGELOG.md
+git commit -am "chore: version 0.6.0"
+git tag -a v0.6.0 -m "v0.6.0 — Le jour et la nuit"
 git push origin main --tags
 ```
 
@@ -48,23 +48,9 @@ git push origin main --tags
 | v0.2.0 | Refonte 2D : scène animée de Yopougon, gbaka, Yango | « Mon jeu ressemblait à un formulaire, regardez maintenant » |
 | v0.3.0 | Vieux Père Ali, création du perso, tutoriel, vannes en nouchi | « Créez votre perso de Babi » |
 | v0.4.0 | Une journée complète : réunion, garba, kpakpato, maquis | « Ton perso doit survivre à toute une journée » |
+| v0.5.0 | La vie d'étudiant : bus plein, amphi bondé, prof absent, poly, cité U | « Étudiant à Babi : le mode le plus difficile du jeu » |
 
 ## 🔜 À venir
-
-### v0.5.0 — La vie d'étudiant
-*Épisode : « Étudiant à Babi : le mode le plus difficile du jeu » (cible : les étudiants de Cocody, Abobo-Adjamé, Bouaké…)*
-- `feat: choix du statut sur la carte d'identité — Travailleur ou Étudiant(e)`
-- `feat: nouvelle jauge 📚 Moyenne pour le mode étudiant`
-- `feat: scène arrêt de bus — la file d'attente qui ne bouge pas, le bus déjà plein qui passe sans s'arrêter`
-- `feat: woro-woro dont le prix augmente sans prévenir (« C'est 300 maintenant, c'est le carburant »)`
-- `feat: scène amphi bondé — assis par terre, sur la fenêtre, ou garder la place d'un ami`
-- `feat: prof absent après 2h d'attente`
-- `feat: TD à rendre vs délestage pendant les révisions`
-- `feat: cité U — chambre partagée, cotisation pour le gaz`
-- `feat: la bourse qui tarde… puis qui tombe — économiser ou faire la fête ?`
-- `feat: polycopiés à acheter et photocopie du cours d'un camarade`
-- `feat: jour d'exam — réviser toute la nuit ou dormir ?`
-- Scénarios : [etudiant.md](docs/vies/etudiant.md)
 
 ### v0.6.0 — Le jour et la nuit
 *Épisode : « J'ai ajouté le jour et la nuit à mon jeu »*
@@ -94,6 +80,7 @@ git push origin main --tags
 - `feat: événements aléatoires (délestage, pluie, panne de gbaka, embouteillage monstre, visite surprise de la famille)`
 - `feat: carte bilan à partager (capture pour TikTok)`
 - `feat: sauvegarde automatique de la partie`
+- `feat: les jours suivants — travailleur : le 25 du mois, la cotisation, la tontine ; étudiant : la bourse, la veille d'exam, les résultats`
 
 ### v0.9.0 — Son & ambiance
 *Épisode : « J'ai mis du coupé-décalé dans mon jeu »*
