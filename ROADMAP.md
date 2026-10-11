@@ -12,6 +12,11 @@ Le jeu reste **drôle avant tout**. L'humour ivoirien sert à montrer les réali
 - Chaque choix a une conséquence drôle **et** une petite vérité (le conseil du Vieux Père)
 - Les textes s'accordent selon que le joueur est un gars ou une go
 
+## Les vies et leurs scénarios
+
+Chaque vie a son univers complet (lieux, personnages, gags, scénarios) dans [docs/vies/](docs/vies/README.md) :
+[💼 Travailleur](docs/vies/travailleur.md) · [🎓 Étudiant](docs/vies/etudiant.md) · [🚐 Apprenti](docs/vies/apprenti.md) · [📦 Djassaman](docs/vies/djassaman.md)
+
 ## Règles de commit
 
 Format : `type: description courte` ([Conventional Commits](https://www.conventionalcommits.org/fr/))
@@ -48,9 +53,11 @@ git push origin main --tags
 *Épisode : « Ton perso doit survivre à toute une journée »*
 - `refactor: sépare les situations dans un fichier data/scenes.js`
 - `feat: moteur de scènes qui enchaîne les situations`
-- `feat: scène Plateau — la réunion avec le boss`
-- `feat: scène midi — garba ou alloco ?`
-- `feat: scène soir — maquis avec les gars`
+- `feat: scène Plateau — la réunion et le délestage`
+- `feat: scène midi — garba, alloco ou le cahier de Tantie Garba`
+- `feat: scène Tantie Bijou la kpakpato`
+- `feat: scène soir — l'afterwork au maquis`
+- Scénarios : [travailleur.md](docs/vies/travailleur.md) n°2, 3, 5 et 7 (les n°4, 6 et 8 viendront avec les jours, en v0.8)
 - `feat: transitions entre les scènes (fondu + nom du quartier)`
 
 ### v0.5.0 — La vie d'étudiant
@@ -66,6 +73,7 @@ git push origin main --tags
 - `feat: bourse qui tarde et budget garba de fin de mois`
 - `feat: polycopiés à acheter et photocopie du cours d'un camarade`
 - `feat: jour d'exam — réviser toute la nuit ou dormir ?`
+- Scénarios : [etudiant.md](docs/vies/etudiant.md)
 
 ### v0.6.0 — Le jour et la nuit
 *Épisode : « J'ai ajouté le jour et la nuit à mon jeu »*
@@ -85,6 +93,7 @@ git push origin main --tags
 - `feat: contrôle de police et tchoko`
 - `feat: gbaka en panne, tout le monde descend pousser`
 - `feat: réveil à 4h30, dodo sur la banquette`
+- Scénarios : [apprenti.md](docs/vies/apprenti.md)
 
 ### v0.8.0 — Survivre 7 jours
 *Épisode : « Peux-tu tenir 7 jours à Abidjan ? » (défi pour les abonnés)*
@@ -117,6 +126,7 @@ Trois vies jouables (travailleur, étudiant, apprenti), une semaine à survivre,
 - `feat: la mairie qui confisque la marchandise`
 - `feat: déguerpissement — l'étal rasé du jour au lendemain`
 - `feat: négocier « prix de gros » avec un client qui ne veut qu'un seul paquet`
+- Scénarios : [djassaman.md](docs/vies/djassaman.md)
 
 ### v1.2.0 — Gombo, logement & communes
 *Épisode : « Trouver un travail et un logement à Babi, c'est pas facile »*
