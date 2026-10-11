@@ -8,6 +8,7 @@ Le jeu reste **drôle avant tout**. L'humour ivoirien sert à montrer les réali
 
 - On parle comme à Babi : nouchi, expressions du quotidien, Vieux Père Ali comme narrateur
 - On se moque des situations, jamais d'une ethnie, d'une religion ou d'une personne réelle
+- Avec les petits métiers (apprentis, djassamans…), on rit **avec** eux, pas **d'eux** : ce sont les débrouillards de Babi
 - Chaque choix a une conséquence drôle **et** une petite vérité (le conseil du Vieux Père)
 - Les textes s'accordent selon que le joueur est un gars ou une go
 
@@ -73,36 +74,60 @@ git push origin main --tags
 - `feat: lampadaires et fenêtres allumées la nuit`
 - `feat: écran bilan de fin de journée`
 
-### v0.7.0 — Survivre 7 jours
+### v0.7.0 — La vie d'apprenti gbaka
+*Épisode : « Cette fois, c'est toi l'apprenti » (on passe de l'autre côté du gbaka de la v0.2)*
+- `feat: statut Apprenti sur la carte d'identité`
+- `feat: nouvelle jauge 🎯 Versement — la recette à rendre au patron chaque soir`
+- `feat: crier les destinations pour remplir le gbaka avant les autres`
+- `feat: « Y'a pas monnaie » — rendre la monnaie… ou pas`
+- `feat: client qui négocie le prix et client qui crie « À côté ! » au mauvais moment`
+- `feat: gnambros à la gare qui réclament leur part`
+- `feat: contrôle de police et tchoko`
+- `feat: gbaka en panne, tout le monde descend pousser`
+- `feat: réveil à 4h30, dodo sur la banquette`
+
+### v0.8.0 — Survivre 7 jours
 *Épisode : « Peux-tu tenir 7 jours à Abidjan ? » (défi pour les abonnés)*
-- `feat: game over si Argent, Énergie ou Santé tombe à 0 (ou Moyenne pour les étudiants)`
-- `feat: compteur de jours et meilleur score`
+- `feat: game over si une jauge vitale tombe à 0 (Moyenne pour l'étudiant, Versement pour l'apprenti)`
+- `feat: compteur de jours et meilleur score par statut`
 - `feat: événements aléatoires (délestage, pluie, contrôle de police, panne de gbaka, grève)`
 - `feat: carte bilan à partager (capture pour TikTok)`
 - `feat: sauvegarde automatique de la partie`
 
-### v0.8.0 — Gombo, logement & communes
+### v0.9.0 — Son & ambiance
+*Épisode : « J'ai mis du coupé-décalé dans mon jeu »*
+- `feat: musique d'ambiance et bouton son on/off`
+- `feat: bruitages (klaxon, moteur gbaka, cris de l'apprenti, notification)`
+- `feat: vibration du téléphone sur les gros événements`
+
+### v1.0.0 — Lancement public
+*Épisode : « Mon jeu est jouable, lien en bio »*
+Trois vies jouables (travailleur, étudiant, apprenti), une semaine à survivre, du son.
+- `feat: PWA installable sur le téléphone`
+- `feat: plus d'options de personnalisation (coiffure, tenue, accessoires)`
+- `chore: page de partage (aperçu du lien sur WhatsApp / TikTok)`
+
+### v1.1.0 — La vie de djassaman
+*Épisode : « Mise à jour 1.1 : les djassamans débarquent »*
+- `feat: statut Djassaman sur la carte d'identité`
+- `feat: nouvelle jauge 📦 Stock — la marchandise prise à crédit chez le grossiste d'Adjamé`
+- `feat: mini-jeu — vendre dans l'embouteillage avant que le feu passe au vert`
+- `feat: client qui démarre sans payer quand ça roule`
+- `feat: choisir quoi vendre (eau, chargeurs, mouchoirs, cacahuètes…) selon la saison et la pluie`
+- `feat: la mairie qui confisque la marchandise`
+- `feat: déguerpissement — l'étal rasé du jour au lendemain`
+- `feat: négocier « prix de gros » avec un client qui ne veut qu'un seul paquet`
+
+### v1.2.0 — Gombo, logement & communes
 *Épisode : « Trouver un travail et un logement à Babi, c'est pas facile »*
-- `feat: chercher un travail (vendeur, chauffeur woro-woro, informaticien…) ou un petit job d'étudiant`
+- `feat: changer de statut en cours de partie (l'apprenti qui devient chauffeur, l'étudiant qui trouve un stage…)`
 - `feat: salaire et gombos à côté`
 - `feat: louer une chambre à Yop, un studio, puis une villa à Cocody`
 - `feat: carte d'Abidjan avec les quartiers (Cocody, Treichville, Marcory, Abobo)`
 - `feat: débloque le choix du quartier sur la carte d'identité`
 - `feat: objets à acheter (téléphone, moto, costume)`
 
-### v0.9.0 — Son & ambiance
-*Épisode : « J'ai mis du coupé-décalé dans mon jeu »*
-- `feat: musique d'ambiance et bouton son on/off`
-- `feat: bruitages (klaxon, moteur gbaka, notification)`
-- `feat: vibration du téléphone sur les gros événements`
-
-### v1.0.0 — Lancement public
-*Épisode : « Mon jeu est jouable, lien en bio »*
-- `feat: PWA installable sur le téléphone`
-- `feat: plus d'options de personnalisation (coiffure, tenue, accessoires)`
-- `chore: page de partage (aperçu du lien sur WhatsApp / TikTok)`
-
-### v1.x — Babi en ligne
+### v2.0.0 — Babi en ligne
 *Comme Lagos Life : jouer avec les autres*
 - `feat: compte joueur et sauvegarde en ligne`
 - `feat: voir les autres joueurs dans le quartier`
@@ -112,4 +137,5 @@ git push origin main --tags
 
 - Réputation par quartier
 - Mini-jeux (négocier avec l'apprenti, esquiver les nids de poule)
+- Autres vies à jouer : chauffeur de woro-woro, tantie garba, serveuse de maquis, gérant de cabine, coiffeur de quartier
 - Choix proposés par les abonnés TikTok en commentaire
