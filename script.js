@@ -1,14 +1,18 @@
 const VERSION = "0.4.0";
 const SPEED = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0.05 : 1;
 
-const LIVES = { travailleur: LIFE_TRAVAILLEUR };
+const LIVES = { travailleur: LIFE_TRAVAILLEUR, etudiant: LIFE_ETUDIANT };
 
 const STATS = {
   argent: { label: "Argent", icon: "💰" },
   energie: { label: "Énergie", icon: "⚡" },
   sante: { label: "Santé", icon: "❤️" },
   respect: { label: "Respect", icon: "⭐" },
+  moyenne: { label: "Moyenne", icon: "📚", max: 20, life: "etudiant" },
 };
+
+const activeStats = () => Object.keys(STATS).filter((key) => !STATS[key].life || STATS[key].life === player.status);
+const formatStat = (key, value) => (key === "argent" ? formatMoney(value) : STATS[key].max ? `${value}/${STATS[key].max}` : value);
 
 const SKINS = [
   { skin: "#c68a5a", dark: "#b07448" },
@@ -66,6 +70,12 @@ const els = {
   dim: $("dim"),
   sun: $("sun"),
   world: $("world"),
+  bus: $("bus"),
+  woro: $("woro"),
+  woroBubble: $("woro-bubble"),
+  woroBubbleRect: $("woro-bubble-rect"),
+  woroBubbleText: $("woro-bubble-text"),
+  statusSeg: $("status-seg"),
   clockIcon: $("clock-icon"),
   officeScreen: $("office-screen"),
   transition: $("transition"),
@@ -169,6 +179,8 @@ function applyLook() {
   });
   els.nameInput.placeholder = g("Koffi", "Awa");
   els.genderSeg.querySelectorAll("button").forEach((b) => b.classList.toggle("is-on", b.dataset.value === player.gender));
+  els.statusSeg.querySelectorAll("button[data-value]").forEach((b) => b.classList.toggle("is-on", b.dataset.value === player.status));
+  els.statusSeg.querySelector('[data-value="etudiant"]').textContent = g("🎓 Étudiant", "🎓 Étudiante");
   els.skinSwatches.querySelectorAll(".swatch").forEach((b, i) => b.classList.toggle("is-on", i === player.skin));
   els.outfitSwatches.querySelectorAll(".swatch").forEach((b, i) => b.classList.toggle("is-on", i === player.outfit));
 }
@@ -189,12 +201,17 @@ function buildSwatches(host, list, colorKey, prop) {
 }
 
 function renderHud(changes = {}) {
-  Object.keys(STATS).forEach((key, i) => {
+  const active = activeStats();
+  Object.keys(STATS).forEach((key) => {
+    document.querySelector(`[data-stat="${key}"]`).hidden = !active.includes(key);
+  });
+
+  active.forEach((key, i) => {
     const value = state[key];
     const host = document.querySelector(`[data-stat="${key}"]`);
     $(`val-${key}`).textContent = key === "argent" ? value.toLocaleString("fr-FR") : value;
 
-    if (key !== "argent") {
+    if (key !== "argent" && !STATS[key].max) {
       $(`bar-${key}`).style.width = `${value}%`;
       host.classList.toggle("is-low", value <= 25);
     }
@@ -225,7 +242,7 @@ function applyEffects(effects) {
   const applied = {};
   Object.entries(effects).forEach(([key, delta]) => {
     const before = state[key];
-    state[key] = key === "argent" ? before + delta : clamp(before + delta, 0, 100);
+    state[key] = key === "argent" ? before + delta : clamp(before + delta, 0, STATS[key].max ?? 100);
     applied[key] = state[key] - before;
   });
   return applied;
@@ -285,6 +302,8 @@ function openCreator() {
       event.preventDefault();
       player.name = els.nameInput.value.trim() || els.nameInput.placeholder;
       els.nameInput.blur();
+      state = { ...life().start };
+      renderHud();
       els.creator.hidden = true;
       resolve();
     };
@@ -327,11 +346,11 @@ function hideToast() {
   els.toast.hidden = true;
 }
 
-function setBubble(text) {
-  els.gbakaBubbleText.textContent = text;
-  const width = els.gbakaBubbleText.getComputedTextLength() + 24;
-  els.gbakaBubbleRect.setAttribute("width", width);
-  els.gbakaBubbleRect.setAttribute("x", 48 - width / 2);
+function setBubble(text, rect = els.gbakaBubbleRect, label = els.gbakaBubbleText) {
+  label.textContent = text;
+  const width = label.getComputedTextLength() + 24;
+  rect.setAttribute("width", width);
+  rect.setAttribute("x", 48 - width / 2);
 }
 
 function drive(el, from, to, duration, easing) {
@@ -361,6 +380,29 @@ const cinematics = {
     await wait(1300);
     els.gbakaBubble.classList.remove("is-on");
     await drive(els.gbaka, 0, -480, 1500, "cubic-bezier(0.55, 0, 0.8, 0.4)");
+  },
+
+  async woro() {
+    setBubble(`500${NBSP}! C'est le carburant${NBSP}!`, els.woroBubbleRect, els.woroBubbleText);
+    await drive(els.woro, 460, 0, 1300, "cubic-bezier(0.15, 0.75, 0.3, 1)");
+    els.woroBubble.classList.add("is-on");
+    await wait(1400);
+    els.woroBubble.classList.remove("is-on");
+    await walk(30, 52, 900);
+    await fadeOut(els.hero, 200);
+    await wait(300);
+    await drive(els.woro, 0, -480, 1100, "cubic-bezier(0.55, 0, 0.8, 0.4)");
+  },
+
+  async chase() {
+    await drive(els.bus, 460, 60, 1500, "cubic-bezier(0.15, 0.75, 0.3, 1)");
+    emote(CAST.q3.x, "😱");
+    await walk(70, 52, 450);
+    await fadeOut(els.hero, 150);
+    await drive(els.bus, 60, -560, 1400, "cubic-bezier(0.55, 0, 0.8, 0.4)");
+    emote(CAST.q1.x, "👏");
+    emote(CAST.q5.x, "👏");
+    await wait(900);
   },
 
   async yango() {
@@ -393,6 +435,21 @@ const cinematics = {
 };
 
 const sceneIntros = {
+  async busPasses() {
+    await wait(400);
+    const pass = drive(els.bus, 460, -560, 2600, "linear");
+    await wait(1500);
+    ["q2", "q4", "q6"].forEach((id) => emote(CAST[id].x, "😩"));
+    await pass;
+  },
+
+  async citeBlackout() {
+    await wait(700);
+    animate(els.dim, [{ opacity: 0 }, { opacity: 0.55 }], { duration: 250 });
+    showToast("⚡", `Délestage${NBSP}!`, "Toute la cité U est dans le noir", 2600);
+    await wait(900);
+  },
+
   async blackout() {
     await wait(700);
     els.officeScreen.classList.add("is-off");
@@ -413,14 +470,14 @@ function emote(x, emoji) {
   els.world.appendChild(el);
 }
 
-async function react(scene, [heroEmoji, npcEmoji]) {
+async function react(scene, [heroEmoji, npcEmoji], npc) {
   animate(els.hero, [{ transform: "translateY(0px)" }, { transform: "translateY(-7px)" }, { transform: "translateY(0px)" }], {
     duration: 380,
     easing: "ease-out",
   });
   emote(150, heroEmoji);
   await wait(800);
-  if (npcEmoji && scene.npcs?.length) emote(CAST[scene.npcs[0]].x, npcEmoji);
+  if (npcEmoji && scene.npcs?.length) emote(CAST[npc ?? scene.npcs[0]].x, npcEmoji);
   await wait(1100);
 }
 
@@ -445,6 +502,9 @@ function showSet(scene) {
   });
   document.querySelectorAll("[data-npc]").forEach((el) => {
     el.style.display = scene.npcs?.includes(el.dataset.npc) ? "inline" : "none";
+  });
+  document.querySelectorAll("[data-prop]").forEach((el) => {
+    el.style.display = scene.props?.includes(el.dataset.prop) ? "inline" : "none";
   });
 }
 
@@ -518,13 +578,17 @@ function renderChoices(scene) {
 }
 
 function showRecap(applied, advice) {
-  const items = Object.entries(STATS)
-    .map(([key, { label, icon }]) => {
+  const keys = activeStats();
+  els.recap.style.setProperty("--n", keys.length);
+  els.recap.classList.toggle("is-dense", keys.length > 4);
+  const items = keys
+    .map((key) => {
+      const { label, icon } = STATS[key];
       const delta = applied[key] ?? 0;
-      const value = key === "argent" ? formatMoney(state[key]) : state[key];
+      const value = formatStat(key, state[key]);
       return `
         <div class="recap__item">
-          <span class="recap__label">${icon} ${label}</span>
+          <span class="recap__label">${icon} <span class="recap__name">${label}</span></span>
           <strong>${value}</strong>
           <span class="delta ${deltaClass(delta)}">${formatDelta(key, delta)}</span>
         </div>`;
@@ -541,7 +605,7 @@ function showRecap(applied, advice) {
   els.recap.hidden = false;
 }
 
-function renderButton(text, onClick, extra) {
+function renderButton(text, onClick, extra, secondary) {
   els.choices.innerHTML = "";
   if (extra) els.choices.appendChild(extra);
   const btn = document.createElement("button");
@@ -550,7 +614,15 @@ function renderButton(text, onClick, extra) {
   btn.textContent = text;
   btn.addEventListener("click", onClick, { once: true });
   els.choices.appendChild(btn);
-  btn.scrollIntoView({ behavior: SPEED < 1 ? "auto" : "smooth", block: "end" });
+  if (secondary) {
+    const alt = document.createElement("button");
+    alt.type = "button";
+    alt.className = "btn btn--ghost btn--block";
+    alt.textContent = secondary.text;
+    alt.addEventListener("click", secondary.onClick, { once: true });
+    els.choices.appendChild(alt);
+  }
+  els.choices.lastElementChild.scrollIntoView({ behavior: SPEED < 1 ? "auto" : "smooth", block: "end" });
 }
 
 async function playScene(index, { transition = true } = {}) {
@@ -583,7 +655,7 @@ async function handleChoice(scene, choice) {
   els.dialogText.textContent = "…";
 
   if (choice.cinematic) await cinematics[choice.cinematic]();
-  else if (choice.reaction) await react(scene, choice.reaction);
+  else if (choice.reaction) await react(scene, choice.reaction, choice.npc);
 
   Object.assign(flags, choice.flags);
   if (choice.time) els.clock.textContent = choice.time;
@@ -607,26 +679,36 @@ async function endOfDay() {
   setSpeaker(SPEAKERS.guide);
   await typeText(life().end.text());
 
-  const totals = Object.fromEntries(Object.keys(STATS).map((key) => [key, state[key] - life().start[key]]));
+  const totals = Object.fromEntries(activeStats().map((key) => [key, state[key] - life().start[key]]));
   showRecap(totals);
 
   const teaser = document.createElement("p");
   teaser.className = "teaser";
   teaser.textContent = `📺 Prochain épisode${NBSP}: ${life().end.next}`;
-  renderButton("🔁 Rejouer la journée", restart, teaser);
+  renderButton("🔁 Rejouer la journée", restart, teaser, { text: "🪪 Changer de vie", onClick: changeLife });
   busy = false;
 }
 
 function resetWorld() {
-  [els.hero, els.gbaka, els.yango, els.dim, els.sun].forEach((el) => {
+  [els.hero, els.gbaka, els.yango, els.bus, els.woro, els.dim, els.sun].forEach((el) => {
     el.getAnimations().forEach((a) => a.cancel());
   });
   els.hero.classList.remove("walking");
   els.gbakaBubble.classList.remove("is-on");
+  els.woroBubble.classList.remove("is-on");
   els.zzz.classList.remove("is-on");
   els.officeScreen.classList.remove("is-off");
   els.world.querySelectorAll(".emote").forEach((el) => el.remove());
   hideToast();
+}
+
+async function changeLife() {
+  if (busy) return;
+  busy = true;
+  await openCreator();
+  Object.keys(flags).forEach((key) => delete flags[key]);
+  busy = false;
+  playScene(0);
 }
 
 function restart() {
@@ -653,6 +735,12 @@ buildSwatches(els.outfitSwatches, OUTFITS, "outfit", "outfit");
 els.genderSeg.querySelectorAll("button").forEach((btn) => {
   btn.addEventListener("click", () => {
     player.gender = btn.dataset.value;
+    applyLook();
+  });
+});
+els.statusSeg.querySelectorAll("button[data-value]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    player.status = btn.dataset.value;
     applyLook();
   });
 });

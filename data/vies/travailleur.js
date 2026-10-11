@@ -242,7 +242,7 @@ const LIFE_TRAVAILLEUR = {
 
   end: {
     place: "🌙 Fin de la journée",
-    next: "la vie d'étudiant à la fac de Cocody…",
+    next: "Babi de jour… et de nuit 🌙",
     text: () => {
       const parts = [`${player.name}, ta première journée à Babi est finie.`];
 

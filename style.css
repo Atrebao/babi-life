@@ -114,8 +114,19 @@ button {
   border-radius: 999px;
 }
 
-.pill--clock {
+.pill--clock,
+.pill--moyenne {
   padding: 0 14px;
+}
+
+.pill--moyenne .pill__unit {
+  color: var(--muted);
+}
+
+@media (max-width: 380px) {
+  .hud__row .pill__unit {
+    display: none;
+  }
 }
 
 .coin {
@@ -377,7 +388,7 @@ button {
 
 .recap {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(var(--n, 4), 1fr);
   gap: 6px;
   margin-top: 14px;
   animation: rise 0.4s ease backwards;
@@ -393,6 +404,14 @@ button {
   background: var(--panel-2);
 }
 
+.recap.is-dense .recap__name {
+  display: none;
+}
+
+.recap.is-dense .recap__label {
+  font-size: 0.9rem;
+}
+
 .recap__label {
   color: var(--muted);
   font-size: 0.66rem;
@@ -402,6 +421,7 @@ button {
 .recap__item strong {
   font-family: var(--display);
   font-size: 0.98rem;
+  font-size: min(0.98rem, calc(4.2rem / var(--n, 4)));
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
@@ -573,6 +593,14 @@ button {
 .btn--play:active {
   transform: translateY(4px);
   box-shadow: 0 1px 0 var(--orange-dark);
+}
+
+.btn--ghost {
+  height: 48px;
+  border: 2px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text);
+  font-size: 1.05rem;
 }
 
 .btn--block {
@@ -801,6 +829,11 @@ button {
   font-size: 1rem;
   font-weight: 800;
   transition: background 0.2s, color 0.2s;
+}
+
+.seg button:disabled {
+  color: #b7aac6;
+  cursor: not-allowed;
 }
 
 .seg button.is-on {

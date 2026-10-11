@@ -796,6 +796,11 @@
             <strong class="pill__value" id="val-argent">10 000</strong>
             <span class="pill__unit">FCFA</span>
           </div>
+          <div class="pill pill--moyenne glass" data-stat="moyenne" hidden>
+            <span>📚</span>
+            <strong class="pill__value" id="val-moyenne">10</strong>
+            <span class="pill__unit">/20</span>
+          </div>
           <div class="pill pill--clock glass">
             <span id="clock-icon">☀️</span>
             <strong class="pill__value" id="clock">07:00</strong>
@@ -889,6 +894,15 @@
           </div>
         </div>
         <div class="field">
+          <span class="field__label">Ta vie</span>
+          <div class="seg" id="status-seg">
+            <button type="button" data-value="travailleur">💼 Travailleur</button>
+            <button type="button" data-value="etudiant">🎓 Étudiant</button>
+            <button type="button" disabled>🔒 Apprenti</button>
+            <button type="button" disabled>🔒 Djassaman</button>
+          </div>
+        </div>
+        <div class="field">
           <span class="field__label">Tu es</span>
           <div class="seg" id="gender-seg">
             <button type="button" data-value="gars">Un gars</button>
@@ -921,6 +935,7 @@
   <script src="data/dialogues.js"></script>
   <script src="data/cast.js"></script>
   <script src="data/vies/travailleur.js"></script>
+  <script src="data/vies/etudiant.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
