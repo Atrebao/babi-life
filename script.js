@@ -25,7 +25,7 @@ const OUTFITS = [
 
 const SPEAKERS = {
   guide: { name: "Vieux Père Ali", portrait: true, tone: "is-guide" },
-  narrator: { name: "📍 Yopougon · 7h", portrait: false, tone: "" },
+  narrator: { name: "📍 Babi", portrait: false, tone: "" },
 };
 
 const player = { name: "", gender: "gars", skin: 1, outfit: 0 };
@@ -64,6 +64,13 @@ const els = {
   zzz: $("zzz"),
   dim: $("dim"),
   sun: $("sun"),
+  world: $("world"),
+  clockIcon: $("clock-icon"),
+  officeScreen: $("office-screen"),
+  transition: $("transition"),
+  transitionIcon: $("transition-icon"),
+  transitionPlace: $("transition-place"),
+  transitionTime: $("transition-time"),
 };
 
 let state = { ...INITIAL_STATE };
@@ -73,6 +80,8 @@ let skipIntro = false;
 let skipTyping = null;
 let nextResolver = null;
 let toastTimer = null;
+let sceneIndex = 0;
+const flags = {};
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms * SPEED));
 const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
@@ -114,21 +123,34 @@ function heroMarkup() {
       <rect class="outfit" x="-9.5" y="-38" width="19" height="21" rx="6"/>
       <path d="M-9 -29 H9 M-9 -24 H9" stroke="#fff" stroke-width="1.3" opacity="0.35"/>
       <path d="M-4 -38 L0 -34 L4 -38" fill="none" stroke="#fff" stroke-width="1.4"/>
-      <path d="M-8 -37 L7 -20" stroke="#3b2a20" stroke-width="2"/>
+      <path class="strap" d="M-8 -37 L7 -20" stroke="#3b2a20" stroke-width="2"/>
+      <path class="opt opt-tie tie" d="M0 -37.5 L-2 -34 L0 -23 L2 -34 Z"/>
+      <rect class="opt opt-apron" x="-7.5" y="-30" width="15" height="22" rx="2" fill="#fff"/>
       <rect class="skin-dark" x="-2.5" y="-42" width="5" height="5"/>
       <circle class="skin-dark" cx="-9.5" cy="-48" r="2"/>
       <circle class="skin-dark" cx="9.5" cy="-48" r="2"/>
       <circle class="skin" cx="0" cy="-49" r="9.5"/>
       <path class="only-gars" d="M-9.5 -51 Q-9 -60 0 -60 Q9 -60 9.5 -51 Q5 -55 0 -55 Q-5 -55 -9.5 -51 Z" fill="#1b1b1b"/>
-      <g class="only-go">
+      <g class="only-go hair-go">
         <circle cx="0" cy="-62" r="5.5" fill="#1b1b1b"/>
         <path d="M-10 -49 Q-10.5 -61 0 -61 Q10.5 -61 10 -49 Q7 -56 0 -56 Q-7 -56 -10 -49 Z" fill="#1b1b1b"/>
+      </g>
+      <g class="opt opt-wrap">
+        <path class="wrap" d="M-11 -49 Q-12.5 -63 0 -64 Q12.5 -63 11 -49 Q6 -55 0 -55 Q-6 -55 -11 -49 Z"/>
+        <ellipse class="wrap" cx="6" cy="-64" rx="6" ry="3.5" transform="rotate(-20 6 -64)"/>
+      </g>
+      <g class="only-go">
         <circle cx="-9.8" cy="-44.5" r="1.4" fill="#ffc531"/>
         <circle cx="9.8" cy="-44.5" r="1.4" fill="#ffc531"/>
       </g>
       <g class="eyes">
         <circle cx="-3.3" cy="-48.5" r="1.3" fill="#1a1a1a"/>
         <circle cx="3.3" cy="-48.5" r="1.3" fill="#1a1a1a"/>
+      </g>
+      <g class="opt opt-glasses" fill="none" stroke="#1a1a1a" stroke-width="0.8">
+        <circle cx="-3.3" cy="-48.5" r="2.7"/>
+        <circle cx="3.3" cy="-48.5" r="2.7"/>
+        <path d="M-0.6 -48.5 H0.6"/>
       </g>
       <path d="M-3 -44 Q0 -41.8 3 -44" fill="none" stroke="#3b1f12" stroke-width="1.2" stroke-linecap="round"/>
     </g>`;
@@ -369,6 +391,80 @@ const cinematics = {
   },
 };
 
+const sceneIntros = {
+  async blackout() {
+    await wait(700);
+    els.officeScreen.classList.add("is-off");
+    animate(els.dim, [{ opacity: 0 }, { opacity: 0.55 }], { duration: 250 });
+    showToast("⚡", `Délestage${NBSP}!`, "Tout le Plateau est dans le noir", 2600);
+    await wait(900);
+  },
+};
+
+function emote(x, emoji) {
+  const el = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  el.setAttribute("x", x);
+  el.setAttribute("y", 270);
+  el.setAttribute("text-anchor", "middle");
+  el.classList.add("emote");
+  el.textContent = emoji;
+  el.addEventListener("animationend", () => el.remove());
+  els.world.appendChild(el);
+}
+
+async function react(scene, [heroEmoji, npcEmoji]) {
+  animate(els.hero, [{ transform: "translateY(0px)" }, { transform: "translateY(-7px)" }, { transform: "translateY(0px)" }], {
+    duration: 380,
+    easing: "ease-out",
+  });
+  emote(150, heroEmoji);
+  await wait(800);
+  if (npcEmoji && scene.npcs?.length) emote(CAST[scene.npcs[0]].x, npcEmoji);
+  await wait(1100);
+}
+
+function setupCast() {
+  document.querySelectorAll("[data-npc]").forEach((el) => {
+    const npc = CAST[el.dataset.npc];
+    el.innerHTML = heroMarkup();
+    el.classList.toggle("is-go", npc.gender === "go");
+    el.classList.add(...npc.looks);
+    el.style.setProperty("--skin", SKINS[npc.skin].skin);
+    el.style.setProperty("--skin-dark", SKINS[npc.skin].dark);
+    el.style.setProperty("--outfit", npc.outfit);
+    if (npc.pagne) el.style.setProperty("--pagne", npc.pagne);
+    if (npc.wrap) el.style.setProperty("--wrap", npc.wrap);
+    if (npc.tie) el.style.setProperty("--tie", npc.tie);
+  });
+}
+
+function showSet(scene) {
+  document.querySelectorAll("[data-set]").forEach((el) => {
+    el.style.display = el.dataset.set === scene.set ? "inline" : "none";
+  });
+  document.querySelectorAll("[data-npc]").forEach((el) => {
+    el.style.display = scene.npcs?.includes(el.dataset.npc) ? "inline" : "none";
+  });
+}
+
+async function transitionTo(scene, label = scene.place, time = sceneTime(scene)) {
+  els.transitionIcon.textContent = scene.icon ?? "";
+  els.transitionPlace.textContent = label.replace(/^📍\s*/, "");
+  els.transitionTime.textContent = time;
+  els.transitionTime.hidden = !time;
+  els.transition.classList.add("is-on");
+  await wait(550);
+  if (scene.set) {
+    resetWorld();
+    showSet(scene);
+  }
+  await wait(1100);
+  els.transition.classList.remove("is-on");
+  await wait(350);
+}
+
+const sceneTime = (scene) => (flags.late && scene.lateTime) || scene.time;
+
 function createChip(text, tone) {
   const chip = document.createElement("span");
   chip.className = `chip ${tone}`;
@@ -376,10 +472,10 @@ function createChip(text, tone) {
   return chip;
 }
 
-function renderChoices() {
+function renderChoices(scene) {
   els.choices.innerHTML = "";
 
-  SCENE.choices.forEach((choice, i) => {
+  scene.choices.forEach((choice, i) => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = `choice choice--${choice.id}`;
@@ -400,8 +496,10 @@ function renderChoices() {
     quip.className = "choice__quip";
     quip.textContent = choice.quip;
 
+    const affordable = state.argent + (choice.effects.argent ?? 0) >= 0;
     const effects = document.createElement("span");
     effects.className = "choice__effects";
+    if (!affordable) effects.appendChild(createChip("🔒 Pas assez de wari", "lock"));
     if (!choice.effects.argent) effects.appendChild(createChip("Gratuit", "pos"));
     Object.entries(choice.effects)
       .filter(([, delta]) => delta !== 0)
@@ -412,8 +510,8 @@ function renderChoices() {
 
     body.append(label, quip, effects);
     btn.append(icon, body);
-    btn.disabled = state.argent + (choice.effects.argent ?? 0) < 0;
-    btn.addEventListener("click", () => handleChoice(choice));
+    btn.disabled = !affordable;
+    btn.addEventListener("click", () => handleChoice(scene, choice));
     els.choices.appendChild(btn);
   });
 }
@@ -431,29 +529,51 @@ function showRecap(applied, advice) {
         </div>`;
     })
     .join("");
-  els.recap.innerHTML = `${items}<p class="advice"><span><strong>Vieux Père${NBSP}:</strong> ${advice}</span></p>`;
-  els.recap.querySelector(".advice").prepend(document.querySelector(".dialog__portrait").cloneNode(true));
+  els.recap.innerHTML = items;
+  if (advice) {
+    const p = document.createElement("p");
+    p.className = "advice";
+    p.innerHTML = `<span><strong>Vieux Père${NBSP}:</strong> ${advice}</span>`;
+    p.prepend(document.querySelector(".dialog__portrait").cloneNode(true));
+    els.recap.appendChild(p);
+  }
   els.recap.hidden = false;
 }
 
-function renderEnd() {
+function renderButton(text, onClick, extra) {
   els.choices.innerHTML = "";
-
-  const teaser = document.createElement("p");
-  teaser.className = "teaser";
-  teaser.textContent = `📺 Prochain épisode${NBSP}: ${SCENE.next}`;
-
+  if (extra) els.choices.appendChild(extra);
   const btn = document.createElement("button");
   btn.type = "button";
   btn.className = "btn btn--play btn--block";
-  btn.textContent = "🔁 Rejouer";
-  btn.addEventListener("click", restart);
-
-  els.choices.append(teaser, btn);
+  btn.textContent = text;
+  btn.addEventListener("click", onClick, { once: true });
+  els.choices.appendChild(btn);
   btn.scrollIntoView({ behavior: SPEED < 1 ? "auto" : "smooth", block: "end" });
 }
 
-async function handleChoice(choice) {
+async function playScene(index, { transition = true } = {}) {
+  busy = true;
+  sceneIndex = index;
+  const scene = DAY[index];
+
+  els.recap.hidden = true;
+  els.choices.innerHTML = "";
+  els.dialogText.textContent = "";
+  if (transition) await transitionTo(scene);
+  else showSet(scene);
+
+  els.clock.textContent = sceneTime(scene);
+  els.clockIcon.textContent = scene.clockIcon ?? "☀️";
+  setSpeaker(SPEAKERS.narrator, scene.place);
+  if (scene.intro) await sceneIntros[scene.intro]();
+
+  await typeText(scene.text(flags));
+  renderChoices(scene);
+  busy = false;
+}
+
+async function handleChoice(scene, choice) {
   if (busy) return;
   busy = true;
 
@@ -461,15 +581,38 @@ async function handleChoice(choice) {
   setSpeaker(SPEAKERS.narrator, `${choice.icon} ${choice.label}`);
   els.dialogText.textContent = "…";
 
-  await cinematics[choice.id]();
+  if (choice.cinematic) await cinematics[choice.cinematic]();
+  else if (choice.reaction) await react(scene, choice.reaction);
 
-  els.clock.textContent = choice.time;
+  Object.assign(flags, choice.flags);
+  if (choice.time) els.clock.textContent = choice.time;
   const applied = applyEffects(choice.effects);
   renderHud(applied);
   await typeText(choice.result());
   showRecap(applied, choice.advice());
-  renderEnd();
 
+  const last = sceneIndex === DAY.length - 1;
+  renderButton(last ? "🌙 Fin de la journée" : "Continuer ➜", () => (last ? endOfDay() : playScene(sceneIndex + 1)));
+  busy = false;
+}
+
+async function endOfDay() {
+  busy = true;
+  els.recap.hidden = true;
+  els.choices.innerHTML = "";
+  els.dialogText.textContent = "";
+  await transitionTo({ icon: "🌙" }, DAY_END.place, "");
+
+  setSpeaker(SPEAKERS.guide);
+  await typeText(DAY_END.text());
+
+  const totals = Object.fromEntries(Object.keys(STATS).map((key) => [key, state[key] - INITIAL_STATE[key]]));
+  showRecap(totals);
+
+  const teaser = document.createElement("p");
+  teaser.className = "teaser";
+  teaser.textContent = `📺 Prochain épisode${NBSP}: ${DAY_END.next}`;
+  renderButton("🔁 Rejouer la journée", restart, teaser);
   busy = false;
 }
 
@@ -480,38 +623,30 @@ function resetWorld() {
   els.hero.classList.remove("walking");
   els.gbakaBubble.classList.remove("is-on");
   els.zzz.classList.remove("is-on");
+  els.officeScreen.classList.remove("is-off");
+  els.world.querySelectorAll(".emote").forEach((el) => el.remove());
   hideToast();
-}
-
-async function startScene() {
-  busy = true;
-  resetWorld();
-  els.clock.textContent = SCENE.time;
-  els.recap.hidden = true;
-  els.choices.innerHTML = "";
-
-  setSpeaker(SPEAKERS.narrator);
-  await typeText(SCENE.text());
-  renderChoices();
-  busy = false;
 }
 
 function restart() {
   if (busy) return;
   state = { ...INITIAL_STATE };
+  Object.keys(flags).forEach((key) => delete flags[key]);
   renderHud();
-  startScene();
+  playScene(0);
 }
 
 async function play() {
   els.titleScreen.classList.add("is-hidden");
   els.game.classList.remove("is-title");
   if (!introDone) await runIntro();
-  startScene();
+  playScene(0, { transition: false });
 }
+
 
 els.hero.innerHTML = heroMarkup();
 els.previewHero.innerHTML = heroMarkup();
+setupCast();
 buildSwatches(els.skinSwatches, SKINS, "skin", "skin");
 buildSwatches(els.outfitSwatches, OUTFITS, "outfit", "outfit");
 els.genderSeg.querySelectorAll("button").forEach((btn) => {
