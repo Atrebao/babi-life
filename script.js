@@ -1,4 +1,4 @@
-const VERSION = "0.2.0";
+const VERSION = "0.3.0";
 const SPEED = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0.05 : 1;
 const NBSP = " ";
 

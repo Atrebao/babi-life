@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.2.0 — Refonte en jeu 2D
+## v0.3.0 — Bienvenue à Babi
 
 - Introduction par Vieux Père Ali, le guide du quartier, en nouchi
 - Création du personnage façon carte d'identité : prénom, gars ou go, teint, tenue (quartiers Cocody et Abobo en teaser)
@@ -8,6 +8,9 @@
 - Textes réécrits avec l'humour de Babi (apprenti, tantie, boucantier, délestage, zouglou…) et accordés gars / go
 - Phrase d'accroche sur chaque choix et conseil du Vieux Père après le résultat
 - Teaser du prochain épisode en fin de partie
+
+## v0.2.0 — Refonte en jeu 2D
+
 - Scène 2D illustrée de Yopougon : maisons, maquis, cocotier, lagune, skyline du Plateau, embouteillage qui klaxonne
 - Personnage animé (respiration, clignement des yeux, marche)
 - Cinématique pour chaque choix : le gbaka arrive avec l'apprenti (« Plateau ! Plateau ! »), le Yango arrive et repart, ou le perso retourne se coucher (Zzz, puis 12 appels manqués)
