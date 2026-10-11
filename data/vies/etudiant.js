@@ -115,7 +115,7 @@ const LIFE_ETUDIANT = {
           icon: "⏳",
           label: "Attendre encore",
           quip: "Peut-être qu'il est vraiment à Adjamé",
-          effects: { energie: -15, moyenne: 2 },
+          effects: { energie: -15, moyenne: 1 },
           reaction: ["🥱", "📣"],
           result: () =>
             `Dr Yao est arrivé à 11h45. Cours de 15 minutes. «${NBSP}Le reste est dans le polycopié.${NBSP}» Tu sens venir la suite…`,
@@ -160,7 +160,7 @@ const LIFE_ETUDIANT = {
           icon: "💸",
           label: "Acheter le polycopié",
           quip: "Le savoir a un prix : 3 000 F",
-          effects: { argent: -3000, moyenne: 3 },
+          effects: { argent: -3000, moyenne: 2 },
           reaction: ["😮‍💨", "🤑"],
           result: () => "15 pages floues, et les 25 autres c'est le cours de l'année passée. Mais au moins, tu l'as.",
           advice: () => `Le savoir n'a pas de prix. Mais à la fac, apparemment, il coûte 3${NBSP}000 F.`,
@@ -197,7 +197,6 @@ const LIFE_ETUDIANT = {
       npcs: ["cousin"],
       place: "📍 Cité U · Chambre 214",
       icon: "🏚️",
-      clockIcon: "🌙",
       time: "21:00",
       intro: "citeBlackout",
       text: () =>
@@ -208,7 +207,7 @@ const LIFE_ETUDIANT = {
           icon: "🔦",
           label: "Travailler à la lampe du téléphone",
           quip: "Batterie 12 %, courage 100 %",
-          effects: { energie: -25, moyenne: 3, sante: -5 },
+          effects: { energie: -25, moyenne: 2, sante: -5 },
           reaction: ["🔦", "🥖"],
           result: () => "TD fini à 2h du matin. Téléphone à 1 %. Tes yeux aussi.",
           advice: () => "Le délestage coupe le courant, pas le courage.",
@@ -240,7 +239,7 @@ const LIFE_ETUDIANT = {
 
   end: {
     place: "🌙 Fin de la journée",
-    next: "Babi de jour… et de nuit 🌙",
+    next: "cette fois, c'est toi l'apprenti du gbaka 🚐",
     text: () => {
       const m = state.moyenne;
       const parts = [`${player.name}, ta première journée à la fac est finie.`];

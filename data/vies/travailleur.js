@@ -196,10 +196,9 @@ const LIFE_TRAVAILLEUR = {
       id: "maquis",
       set: "maquis",
       npcs: ["collegue1", "collegue2"],
-      place: "📍 Maquis « Le Temps des Boss »",
+      place: `📍 Maquis «${NBSP}Le Temps des Boss${NBSP}»`,
       icon: "🍻",
-      clockIcon: "🌙",
-      time: "19:00",
+        time: "19:00",
       text: () =>
         `Les collègues t'appellent${NBSP}: «${NBSP}On va s'enjailler un peu${NBSP}!${NBSP}» Il te reste ${formatMoney(state.argent)} jusqu'à la fin du mois. Au maquis, le premier qui dit «${NBSP}c'est moi qui paie${NBSP}» devient le roi de la soirée… et le pauvre du mois.`,
       choices: [
@@ -238,11 +237,59 @@ const LIFE_TRAVAILLEUR = {
         },
       ],
     },
+    {
+      id: "retour",
+      set: "yop",
+      place: "📍 Yopougon · Retour à la maison",
+      icon: "🌃",
+      time: "22:30",
+      text: () =>
+        `22h30, tu descends au carrefour de Yop. La maison est à 45 minutes à pied. Le voisin a déjà mis le zouglou à fond pour toute la rue, et sur les 3 lampadaires du quartier… 2 marchent. C'est déjà bien.`,
+      choices: [
+        {
+          id: "marcher",
+          icon: "🚶",
+          label: "Rentrer à pied",
+          quip: "C'est pas loin… 45 minutes",
+          cinematic: "walkHome",
+          time: "23:15",
+          effects: { energie: -20, sante: 5 },
+          result: () =>
+            "Tu as marché sous les 2 lampadaires qui marchent, salué tout le quartier et esquivé 4 nids de poule. Ton corps dit merci pour le sport.",
+          advice: () => "La nuit à Yop, tout le monde se connaît. Même les chiens te disent bonsoir.",
+        },
+        {
+          id: "woro-nuit",
+          icon: "🚖",
+          label: "Prendre un woro-woro de nuit",
+          quip: "Tarif de nuit : le prix du jour × 2",
+          cinematic: "woro",
+          bubble: `C'est tarif de nuit${NBSP}! 600${NBSP}!`,
+          time: "22:45",
+          effects: { argent: -600, energie: -5 },
+          result: () =>
+            `Le chauffeur a dit «${NBSP}c'est tarif de nuit${NBSP}». Tu as demandé à quelle heure commence la nuit. Il a répondu${NBSP}: «${NBSP}Quand je veux.${NBSP}»`,
+          advice: () => "La nuit, les prix montent. Le sommeil, lui, est gratuit : rentre plus tôt la prochaine fois.",
+        },
+        {
+          id: "grin",
+          icon: "🍵",
+          label: "Rester causer avec les gars du quartier",
+          quip: "Le grin, c'est sacré",
+          time: "01:00",
+          effects: { energie: -15, respect: 10 },
+          reaction: ["🍵", ""],
+          result: () =>
+            "Vous avez refait le match des Éléphants, parlé de tout le quartier et bu 4 petits verres de thé bien sucré. Il est 1h du matin.",
+          advice: () => "Le grin, c'est bien. Mais demain, ton réveil va encore sonner 3 fois.",
+        },
+      ],
+    },
   ],
 
   end: {
     place: "🌙 Fin de la journée",
-    next: "Babi de jour… et de nuit 🌙",
+    next: "cette fois, c'est toi l'apprenti du gbaka 🚐",
     text: () => {
       const parts = [`${player.name}, ta première journée à Babi est finie.`];
 

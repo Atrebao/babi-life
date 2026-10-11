@@ -43,3 +43,20 @@ const tutorial = () => [
     text: `Chaque choix fait bouger tes jauges. Si une jauge tombe à zéro… ça va chauffer. Allez, on est ensemble${NBSP}! Ta journée commence.`,
   },
 ];
+
+const dayTitle = () => {
+  const s = state;
+  const start = life().start;
+  const titles = [
+    [s.moyenne >= 14, "🎓", g("Futur docteur", "Future docteure"), "Au village, on prépare déjà la fête"],
+    [s.moyenne < 10, "📉", g("Abonné au rattrapage", "Abonnée au rattrapage"), "Papa ne doit pas savoir"],
+    [s.respect >= 75, "👑", g("Boucantier du jour", "Boucantière du jour"), "Tout le quartier parle de toi"],
+    [s.argent <= start.argent * 0.3, "💸", g("Fauché du mois", "Fauchée du mois"), "Le 25, c'est encore loin…"],
+    [s.energie <= 30, "😮‍💨", g("Mort de fatigue", "Morte de fatigue"), "Même ton lit a pitié de toi"],
+    [s.respect <= 25, "🙈", "Respect en délestage", "Même le gardien ne te salue plus"],
+    [s.argent >= start.argent * 0.8, "🏦", "Économe de Babi", "Ton wari dort tranquille"],
+    [true, "💪", g("Vrai débrouillard", "Vraie débrouillarde"), "Babi ne t'a pas eu aujourd'hui"],
+  ];
+  const [, icon, title, sub] = titles.find(([ok]) => ok);
+  return { icon, title, sub };
+};

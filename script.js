@@ -70,6 +70,17 @@ const els = {
   dim: $("dim"),
   sun: $("sun"),
   world: $("world"),
+  daylight: $("daylight"),
+  sunArc: $("sun-arc"),
+  bilan: $("bilan"),
+  bilanKicker: $("bilan-kicker"),
+  bilanBadgeIcon: $("bilan-badge-icon"),
+  bilanBadgeTitle: $("bilan-badge-title"),
+  bilanBadgeSub: $("bilan-badge-sub"),
+  bilanStats: $("bilan-stats"),
+  bilanTimeline: $("bilan-timeline"),
+  bilanAdvice: $("bilan-advice"),
+  bilanNext: $("bilan-next"),
   bus: $("bus"),
   woro: $("woro"),
   woroBubble: $("woro-bubble"),
@@ -92,6 +103,7 @@ let skipTyping = null;
 let nextResolver = null;
 let toastTimer = null;
 let sceneIndex = 0;
+const history = [];
 const flags = {};
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms * SPEED));
@@ -382,8 +394,8 @@ const cinematics = {
     await drive(els.gbaka, 0, -480, 1500, "cubic-bezier(0.55, 0, 0.8, 0.4)");
   },
 
-  async woro() {
-    setBubble(`500${NBSP}! C'est le carburant${NBSP}!`, els.woroBubbleRect, els.woroBubbleText);
+  async woro(choice) {
+    setBubble(choice?.bubble ?? `500${NBSP}! C'est le carburant${NBSP}!`, els.woroBubbleRect, els.woroBubbleText);
     await drive(els.woro, 460, 0, 1300, "cubic-bezier(0.15, 0.75, 0.3, 1)");
     els.woroBubble.classList.add("is-on");
     await wait(1400);
@@ -405,6 +417,12 @@ const cinematics = {
     await wait(900);
   },
 
+  async walkHome() {
+    await walk(-112, -8, 1800);
+    await fadeOut(els.hero, 250);
+    await wait(400);
+  },
+
   async yango() {
     showToast("🚕", "Ton chauffeur est arrivé", `Il dit qu'il est «${NBSP}à côté${NBSP}» depuis 20 min`, 3000);
     await drive(els.yango, 460, 0, 1400, "cubic-bezier(0.15, 0.75, 0.3, 1)");
@@ -421,13 +439,7 @@ const cinematics = {
     els.zzz.classList.add("is-on");
     await animate(els.dim, [{ opacity: 0 }, { opacity: 0.6 }], { duration: 700 });
     await wait(1800);
-    await Promise.all([
-      animate(els.dim, [{ opacity: 0.6 }, { opacity: 0 }], { duration: 900 }),
-      animate(els.sun, [{ transform: "translateY(0px)" }, { transform: "translateY(-70px)" }], {
-        duration: 1200,
-        easing: "ease-out",
-      }),
-    ]);
+    await animate(els.dim, [{ opacity: 0.6 }, { opacity: 0 }], { duration: 900 });
     els.zzz.classList.remove("is-on");
     showToast("📱", "12 appels manqués", "Le Boss 😡 · Réunion du Plateau", 3000);
     await wait(1200);
@@ -509,19 +521,106 @@ function showSet(scene) {
 }
 
 async function transitionTo(scene, label = scene.place, time = sceneTime(scene)) {
+  const from = els.clock.textContent;
   els.transitionIcon.textContent = scene.icon ?? "";
   els.transitionPlace.textContent = label.replace(/^📍\s*/, "");
-  els.transitionTime.textContent = time;
+  els.transitionTime.textContent = from;
   els.transitionTime.hidden = !time;
   els.transition.classList.add("is-on");
-  await wait(550);
+  await wait(450);
   if (scene.set) {
     resetWorld();
     showSet(scene);
+    applyDaylight(scene.set, time, { instant: true });
   }
-  await wait(1100);
+  if (time) await tickClock(from, time, 900);
+  await wait(time ? 350 : 1100);
   els.transition.classList.remove("is-on");
   await wait(350);
+}
+
+const SET_LIGHT = { yop: "outdoor", garba: "outdoor", cabine: "outdoor", office: "indoor", amphi: "indoor", cite: "indoor", maquis: "self" };
+const SKY = [
+  [0, "#3a3a8a", 0.5],
+  [5, "#3a3a8a", 0.5],
+  [6, "#6b3f8f", 0.34],
+  [7, "#ffb36b", 0.16],
+  [10, "#ffffff", 0],
+  [16, "#ffffff", 0],
+  [17.5, "#ff9a3c", 0.24],
+  [18.5, "#7a3a7a", 0.4],
+  [19.5, "#3a3a8a", 0.5],
+  [24, "#3a3a8a", 0.5],
+];
+
+const toMinutes = (time) => {
+  const [h, m] = time.split(":").map(Number);
+  return h * 60 + m;
+};
+const fromMinutes = (n) => `${String(Math.floor(n / 60) % 24).padStart(2, "0")}:${String(n % 60).padStart(2, "0")}`;
+
+function mixColor(a, b, t) {
+  const pa = a.match(/\w\w/g).map((x) => parseInt(x, 16));
+  const pb = b.match(/\w\w/g).map((x) => parseInt(x, 16));
+  return `#${pa.map((v, i) => Math.round(v + (pb[i] - v) * t).toString(16).padStart(2, "0")).join("")}`;
+}
+
+function skyAt(minutes) {
+  const h = minutes / 60;
+  const i = SKY.findIndex(([at], k) => h >= at && h < SKY[k + 1][0]);
+  const [h0, c0, o0] = SKY[i];
+  const [h1, c1, o1] = SKY[i + 1];
+  const t = (h - h0) / (h1 - h0);
+  return { color: mixColor(c0, c1, t), opacity: o0 + (o1 - o0) * t };
+}
+
+const clockIconAt = (minutes) => {
+  const h = minutes / 60;
+  if (h < 5.5 || h >= 19) return "🌙";
+  if (h < 7) return "🌅";
+  if (h < 17) return "☀️";
+  return "🌇";
+};
+
+function applyDaylight(set, time, { instant = false } = {}) {
+  const minutes = toMinutes(time);
+  const kind = SET_LIGHT[set];
+  const { color, opacity } = skyAt(minutes);
+  const targets = [els.daylight, els.sunArc, ...els.world.querySelectorAll(".night-only")];
+  if (instant) targets.forEach((el) => (el.style.transition = "none"));
+
+  els.daylight.style.fill = color;
+  els.daylight.style.opacity = kind === "self" ? 0 : kind === "indoor" ? opacity * 0.35 : opacity;
+  els.world.classList.toggle("is-night", kind === "outdoor" && (minutes >= 19 * 60 || minutes < 5 * 60 + 30));
+  els.sunArc.style.transform = `translateY(${clamp(-60 + Math.abs(minutes / 60 - 12.5) * 26, -60, 120)}px)`;
+  els.clockIcon.textContent = clockIconAt(minutes);
+
+  if (instant) {
+    void els.world.getBoundingClientRect();
+    targets.forEach((el) => (el.style.transition = ""));
+  }
+}
+
+function tickClock(from, to, duration = 800) {
+  const a = toMinutes(from);
+  const b = toMinutes(to);
+  if (b <= a || SPEED < 1) {
+    els.clock.textContent = to;
+    els.transitionTime.textContent = to;
+    return Promise.resolve();
+  }
+  return new Promise((resolve) => {
+    const start = performance.now();
+    const step = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const value = fromMinutes(Math.round(a + (b - a) * (1 - (1 - t) ** 2)));
+      els.clock.textContent = value;
+      els.transitionTime.textContent = value;
+      if (t < 1) requestAnimationFrame(step);
+      else resolve();
+    };
+    requestAnimationFrame(step);
+  });
 }
 
 const sceneTime = (scene) => (flags.late && scene.lateTime) || scene.time;
@@ -630,14 +729,17 @@ async function playScene(index, { transition = true } = {}) {
   sceneIndex = index;
   const scene = life().day[index];
 
+  if (index === 0) history.length = 0;
   els.recap.hidden = true;
   els.choices.innerHTML = "";
   els.dialogText.textContent = "";
   if (transition) await transitionTo(scene);
-  else showSet(scene);
+  else {
+    showSet(scene);
+    applyDaylight(scene.set, sceneTime(scene), { instant: true });
+  }
 
   els.clock.textContent = sceneTime(scene);
-  els.clockIcon.textContent = scene.clockIcon ?? "☀️";
   setSpeaker(SPEAKERS.narrator, scene.place);
   if (scene.intro) await sceneIntros[scene.intro]();
 
@@ -654,11 +756,16 @@ async function handleChoice(scene, choice) {
   setSpeaker(SPEAKERS.narrator, `${choice.icon} ${choice.label}`);
   els.dialogText.textContent = "…";
 
-  if (choice.cinematic) await cinematics[choice.cinematic]();
+  history.push({ time: els.clock.textContent, icon: choice.icon, place: scene.place.replace(/^📍\s*/, ""), label: choice.label });
+
+  if (choice.cinematic) await cinematics[choice.cinematic](choice);
   else if (choice.reaction) await react(scene, choice.reaction, choice.npc);
 
   Object.assign(flags, choice.flags);
-  if (choice.time) els.clock.textContent = choice.time;
+  if (choice.time) {
+    applyDaylight(scene.set, choice.time);
+    await tickClock(els.clock.textContent, choice.time, 700);
+  }
   const applied = applyEffects(choice.effects);
   renderHud(applied);
   await typeText(choice.result());
@@ -675,18 +782,53 @@ async function endOfDay() {
   els.choices.innerHTML = "";
   els.dialogText.textContent = "";
   await transitionTo({ icon: "🌙" }, life().end.place, "");
-
-  setSpeaker(SPEAKERS.guide);
-  await typeText(life().end.text());
-
-  const totals = Object.fromEntries(activeStats().map((key) => [key, state[key] - life().start[key]]));
-  showRecap(totals);
-
-  const teaser = document.createElement("p");
-  teaser.className = "teaser";
-  teaser.textContent = `📺 Prochain épisode${NBSP}: ${life().end.next}`;
-  renderButton("🔁 Rejouer la journée", restart, teaser, { text: "🪪 Changer de vie", onClick: changeLife });
+  showBilan();
   busy = false;
+}
+
+function showBilan() {
+  const start = life().start;
+  const title = dayTitle();
+  els.bilanKicker.textContent = `Jour 1 · ${player.status === "etudiant" ? g("🎓 Étudiant", "🎓 Étudiante") : "💼 Travailleur"} · ${player.name}`;
+  els.bilanBadgeIcon.textContent = title.icon;
+  els.bilanBadgeTitle.textContent = title.title;
+  els.bilanBadgeSub.textContent = title.sub;
+
+  const colors = { argent: "var(--gold)", energie: "var(--energy)", sante: "var(--health)", respect: "var(--respect)", moyenne: "var(--green)" };
+  els.bilanStats.innerHTML = activeStats()
+    .map((key) => {
+      const value = state[key];
+      const delta = value - start[key];
+      const max = key === "argent" ? Math.max(start.argent, value) : STATS[key].max ?? 100;
+      return `
+        <div class="bstat">
+          <span class="bstat__label">${STATS[key].icon} ${STATS[key].label}</span>
+          <span class="bstat__bar"><i style="width: ${(Math.max(value, 0) / max) * 100}%; --c: ${colors[key]}"></i></span>
+          <strong>${formatStat(key, value)}</strong>
+          <span class="delta ${deltaClass(delta)}">${formatDelta(key, delta)}</span>
+        </div>`;
+    })
+    .join("");
+
+  els.bilanTimeline.innerHTML = "";
+  history.forEach((step) => {
+    const li = document.createElement("li");
+    li.innerHTML = '<span class="tl__time"></span><span></span><span class="tl__text"><strong></strong><span></span></span>';
+    li.children[0].textContent = step.time;
+    li.children[1].textContent = step.icon;
+    li.querySelector(".tl__text strong").textContent = step.place;
+    li.querySelector(".tl__text span").textContent = step.label;
+    els.bilanTimeline.appendChild(li);
+  });
+
+  els.bilanAdvice.innerHTML = "<span><strong></strong> </span>";
+  els.bilanAdvice.querySelector("strong").textContent = `Vieux Père${NBSP}:`;
+  els.bilanAdvice.firstChild.append(life().end.text());
+  els.bilanAdvice.prepend(document.querySelector(".dialog__portrait").cloneNode(true));
+  els.bilanNext.textContent = `📺 Prochain épisode${NBSP}: ${life().end.next}`;
+
+  els.bilan.hidden = false;
+  els.bilan.scrollTop = 0;
 }
 
 function resetWorld() {
@@ -705,6 +847,7 @@ function resetWorld() {
 async function changeLife() {
   if (busy) return;
   busy = true;
+  els.bilan.hidden = true;
   await openCreator();
   Object.keys(flags).forEach((key) => delete flags[key]);
   busy = false;
@@ -713,6 +856,7 @@ async function changeLife() {
 
 function restart() {
   if (busy) return;
+  els.bilan.hidden = true;
   state = { ...life().start };
   Object.keys(flags).forEach((key) => delete flags[key]);
   renderHud();
@@ -754,6 +898,8 @@ els.skipBtn.addEventListener("click", (event) => {
   handleTap();
 });
 els.playBtn.addEventListener("click", play, { once: true });
+$("bilan-replay").addEventListener("click", restart);
+$("bilan-change").addEventListener("click", changeLife);
 
 els.version.textContent = `v${VERSION}`;
 applyLook();
