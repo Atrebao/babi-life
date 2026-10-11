@@ -1,7 +1,7 @@
 const VERSION = "0.4.0";
 const SPEED = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0.05 : 1;
 
-const INITIAL_STATE = { argent: 10000, energie: 100, sante: 100, respect: 50 };
+const LIVES = { travailleur: LIFE_TRAVAILLEUR };
 
 const STATS = {
   argent: { label: "Argent", icon: "💰" },
@@ -28,7 +28,8 @@ const SPEAKERS = {
   narrator: { name: "📍 Babi", portrait: false, tone: "" },
 };
 
-const player = { name: "", gender: "gars", skin: 1, outfit: 0 };
+const player = { name: "", gender: "gars", skin: 1, outfit: 0, status: "travailleur" };
+const life = () => LIVES[player.status];
 const g = (gars, go) => (player.gender === "go" ? go : gars);
 
 const $ = (id) => document.getElementById(id);
@@ -73,7 +74,7 @@ const els = {
   transitionTime: $("transition-time"),
 };
 
-let state = { ...INITIAL_STATE };
+let state = { ...life().start };
 let busy = false;
 let introDone = false;
 let skipIntro = false;
@@ -555,7 +556,7 @@ function renderButton(text, onClick, extra) {
 async function playScene(index, { transition = true } = {}) {
   busy = true;
   sceneIndex = index;
-  const scene = DAY[index];
+  const scene = life().day[index];
 
   els.recap.hidden = true;
   els.choices.innerHTML = "";
@@ -591,7 +592,7 @@ async function handleChoice(scene, choice) {
   await typeText(choice.result());
   showRecap(applied, choice.advice());
 
-  const last = sceneIndex === DAY.length - 1;
+  const last = sceneIndex === life().day.length - 1;
   renderButton(last ? "🌙 Fin de la journée" : "Continuer ➜", () => (last ? endOfDay() : playScene(sceneIndex + 1)));
   busy = false;
 }
@@ -601,17 +602,17 @@ async function endOfDay() {
   els.recap.hidden = true;
   els.choices.innerHTML = "";
   els.dialogText.textContent = "";
-  await transitionTo({ icon: "🌙" }, DAY_END.place, "");
+  await transitionTo({ icon: "🌙" }, life().end.place, "");
 
   setSpeaker(SPEAKERS.guide);
-  await typeText(DAY_END.text());
+  await typeText(life().end.text());
 
-  const totals = Object.fromEntries(Object.keys(STATS).map((key) => [key, state[key] - INITIAL_STATE[key]]));
+  const totals = Object.fromEntries(Object.keys(STATS).map((key) => [key, state[key] - life().start[key]]));
   showRecap(totals);
 
   const teaser = document.createElement("p");
   teaser.className = "teaser";
-  teaser.textContent = `📺 Prochain épisode${NBSP}: ${DAY_END.next}`;
+  teaser.textContent = `📺 Prochain épisode${NBSP}: ${life().end.next}`;
   renderButton("🔁 Rejouer la journée", restart, teaser);
   busy = false;
 }
@@ -630,7 +631,7 @@ function resetWorld() {
 
 function restart() {
   if (busy) return;
-  state = { ...INITIAL_STATE };
+  state = { ...life().start };
   Object.keys(flags).forEach((key) => delete flags[key]);
   renderHud();
   playScene(0);

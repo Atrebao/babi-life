@@ -1,0 +1,30 @@
+const CAST = {
+  boss: {
+    gender: "gars",
+    skin: 2,
+    outfit: "#2b2d42",
+    tie: "#c1121f",
+    looks: ["is-bald", "has-tie", "has-glasses", "no-strap"],
+    x: 262,
+  },
+  bijou: {
+    gender: "go",
+    skin: 0,
+    outfit: "#e63946",
+    pagne: "#ffb703",
+    wrap: "#ff7a00",
+    looks: ["has-wrap", "has-glasses", "no-strap"],
+    x: 212,
+  },
+  garba: {
+    gender: "go",
+    skin: 1,
+    outfit: "#1fbf75",
+    pagne: "#ff7a00",
+    wrap: "#ffc531",
+    looks: ["has-wrap", "has-apron", "no-strap"],
+    x: 262,
+  },
+  collegue1: { gender: "gars", skin: 1, outfit: "#3a86ff", looks: ["no-strap"], x: 236 },
+  collegue2: { gender: "go", skin: 2, outfit: "#ff7a1a", pagne: "#9b5de5", looks: ["no-strap"], x: 296 },
+};
