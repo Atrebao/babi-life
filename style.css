@@ -936,7 +936,8 @@ button {
 .is-bald .only-gars,
 .no-strap .strap { display: none; }
 
-[data-set]:not([data-set="yop"]) {
+[data-set]:not([data-set="yop"]),
+[data-prop] {
   display: none;
 }
 
@@ -1009,7 +1010,9 @@ button {
 }
 
 #gbaka,
-#yango {
+#yango,
+#bus,
+#woro {
   transform: translateX(460px);
 }
 
@@ -1017,7 +1020,7 @@ button {
   animation: rumble 0.2s ease-in-out infinite alternate;
 }
 
-#gbaka-bubble {
+.bubble {
   opacity: 0;
   transform: scale(0.6);
   transform-box: fill-box;
@@ -1025,7 +1028,7 @@ button {
   transition: opacity 0.25s, transform 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
 }
 
-#gbaka-bubble.is-on {
+.bubble.is-on {
   opacity: 1;
   transform: scale(1);
 }
