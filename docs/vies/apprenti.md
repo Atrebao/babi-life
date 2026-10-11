@@ -16,7 +16,7 @@ L'objectif du jour : **25 000 F** à rendre au patron le soir. Tout ce qui dépa
 |------|----------|
 | 🚏 La gare de Yop | Le marché, la boîte de nuit et le tribunal en même temps |
 | 🚐 Le gbaka « Dieu Merci » | 18 places officielles, 26 passagers réels, 1 poulet clandestin |
-| 🚦 Le carrefour de la police | Là où le versement commence à fondre |
+| 🚦 Le grand carrefour | Là où tous les gbakas se battent pour les mêmes clients |
 | ⛽ La station | Le chauffeur dit toujours « on a mis 10 000 de carburant ». Personne n'a jamais vérifié |
 | 🍛 Le garba de la gare | Mangé en 3 minutes, debout, entre deux départs |
 
@@ -24,10 +24,10 @@ L'objectif du jour : **25 000 F** à rendre au patron le soir. Tout ce qui dépa
 
 - **Vieux Kader** : le chauffeur. Ne parle jamais, klaxonne tout le temps. Son klaxon a 12 mélodies différentes
 - **Le Patron** : le propriétaire du gbaka. Ne monte jamais dedans, mais compte chaque pièce du versement
-- **Les gars de la gare (gnambros)** : réclament le « ticket » à chaque départ. Le ticket n'existe pas
+- **Petit Ballo** : l'apprenti du gbaka rival « Grâce Divine ». Crie plus fort que toi et vole tes clients avec le sourire
 - **Tantie Akissi** : vendeuse au marché d'Adjamé, monte avec 6 sacs, 2 bassines et paie pour une seule place
 - **Le monsieur en cravate** : négocie le prix comme s'il achetait une villa
-- **Le Chef** : le policier du carrefour. Ses contrôles sont toujours « juste une petite vérification »
+- **Le passager endormi** : s'endort dès qu'il s'assoit, se réveille au terminus et dit que c'est ta faute
 
 ### Gags récurrents
 
@@ -79,31 +79,31 @@ Situation : le monsieur en cravate tend un billet de 10 000 F pour un trajet à 
 
 👴🏾 Vieux Père : « La monnaie, c'est le vrai problème de Babi. Plus que le carburant. »
 
-### 4. Les gars de la gare
+### 4. Le gbaka rival
 📍 Gare d'Adjamé · 9h00
 
-Situation : trois gars s'approchent du gbaka. « Le ticket. » Tu demandes quel ticket. « Le ticket là. » Il n'y a pas de ticket. Il y a juste eux.
+Situation : Petit Ballo, l'apprenti du « Grâce Divine », s'est garé juste devant toi. Il crie « Yop ! Yop ! Moins cher ! » et tes clients changent de gbaka un par un.
 
 | Choix | Effets | Résultat |
 |-------|--------|----------|
-| 💸 Payer le « ticket » | 🎯 −2 000 | Ils sont partis contents. Ils reviennent au prochain départ. C'est un abonnement |
-| 🗣️ Négocier | ⚡ −15 · 🎯 −1 000 · ⭐ +10 | 20 minutes de discussion. Ils ont accepté 1 000. Tu es devenu(e) un(e) diplomate |
-| 📢 Appeler Vieux Kader | ⭐ +5 · 🎯 −2 000 | Vieux Kader est descendu, il a regardé les gars… puis il a payé. Il ne parle jamais, il paie |
+| 📢 Crier encore plus fort | ⚡ −20 · 🎯 +2 000 | Tu as gagné la bataille des voix. Tu n'as plus de voix. Tu fais tes annonces avec les mains maintenant |
+| 🤝 Faire la paix et partager les clients | 🎯 +1 000 · ⭐ +15 | Un gbaka part, puis l'autre. Petit Ballo t'a payé un garba. Dans le fond, c'est ton frère |
+| 🎁 « Le premier qui monte a une place devant ! » | 🎯 +3 000 · ⭐ −5 | Tout le monde voulait la place devant. Cinq personnes sont assises sur le même siège |
 
-👴🏾 Vieux Père : « Le ticket qui n'existe pas, c'est celui qui coûte le plus cher. »
+👴🏾 Vieux Père : « La route est longue, il y a des clients pour tout le monde. Mais il faut quand même se lever tôt. »
 
-### 5. Le contrôle au carrefour
-📍 Carrefour de la police · 11h00
+### 5. La grosse pluie
+📍 Autoroute · 11h00
 
-Situation : le Chef lève la main. « Juste une petite vérification. » Le gbaka a 26 passagers pour 18 places, un rétroviseur scotché et un pneu lisse comme une assiette.
+Situation : le ciel s'ouvre d'un coup. La pluie tombe si fort que la route devient une rivière. Et le toit du « Dieu Merci » goutte pile sur la tête du monsieur en cravate.
 
 | Choix | Effets | Résultat |
 |-------|--------|----------|
-| 🤝 Donner « le café du Chef » | 🎯 −2 000 | « Bonne route. » La petite vérification a duré 4 secondes |
-| 📄 Montrer tous les papiers | ⚡ −20 · 🎯 −500 | Les papiers sont en règle ! Mais il a trouvé un problème avec la couleur du gbaka |
-| 😇 Faire descendre 8 passagers avant le carrefour | ⚡ −15 · ⭐ −10 | Tu les as récupérés 100 m après. Ils ont marché sous le soleil. Ils sont fâchés mais à l'heure |
+| 🚐 Continuer dans l'eau | ⚡ −15 · 🎯 +1 000 · ⭐ +10 | Vieux Kader a conduit le gbaka comme un bateau. Les passagers ont applaudi en arrivant. Le capitaine Kader ne dit toujours rien |
+| ⛱️ S'abriter sous le pont et attendre | ⚡ +10 · 🎯 −1 500 | 40 minutes sous le pont avec 3 autres gbakas. Vous avez fait un petit maquis improvisé. Le versement, lui, n'a pas attendu |
+| 🛍️ Vendre des sachets plastiques comme chapeaux | 🎯 +2 000 · ⭐ +5 | 100 F le sachet. Tout le gbaka porte un chapeau en plastique. Le monsieur en cravate en a pris deux |
 
-👴🏾 Vieux Père : « Le tchoko, c'est petit petit. Mais petit petit, c'est ça qui vide le versement. »
+👴🏾 Vieux Père : « À Babi, quand il pleut, tout le monde court. Le débrouillard, lui, il vend des sachets. »
 
 ### 6. La panne
 📍 Autoroute du Nord · 13h00
@@ -138,7 +138,7 @@ Situation : la journée est finie. Tu comptes ta recette : il manque 4 000 F pou
 
 | Choix | Effets | Résultat |
 |-------|--------|----------|
-| 🗣️ « Patron, la police a trop pris aujourd'hui » | ⭐ −5 · 🎯 ±0 | Le Patron a dit : « C'est pareil chaque jour. » Il a raison. Il te pardonne cette fois |
+| 🗣️ « Patron, la pluie a gâté la journée » | ⭐ −5 · 🎯 ±0 | Le Patron a regardé le ciel tout bleu. Puis il t'a regardé. Il te pardonne cette fois |
 | 💸 Compléter avec ton propre argent | 💰 −4 000 · ⭐ +20 | Versement complet. Ton porte-monnaie est vide, mais le Patron t'a appelé « mon fils / ma fille » |
 | 📅 « Je complète demain, je te jure » | ⭐ −15 · 🎯 −4 000 | Le Patron a noté. Demain, l'objectif est de 29 000 F |
 

@@ -37,3 +37,4 @@ Situation : texte lu par le joueur
 3. Pas de choix parfait : chaque option coûte quelque chose
 4. Le résultat fait rire, le conseil du Vieux Père fait réfléchir
 5. Pas de vannes sur une ethnie, une religion ou une personne réelle
+6. Aucun sujet sur l'État, la politique ou les autorités (police, mairie, administration…) : on reste sur le quotidien des gens

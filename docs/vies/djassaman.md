@@ -8,7 +8,7 @@ Tu vends dans les embouteillages au **carrefour de la Riviera**. Le matin, tu pr
 
 ### Jauge spéciale : 📦 Stock
 
-La marchandise que tu portes. Un stock vide, c'est une bonne journée (tout vendu !) ou une très mauvaise (la mairie a tout pris).
+La marchandise que tu portes. Un stock vide, c'est une bonne journée (tout vendu !) ou une très mauvaise (le cousin Bakary a « gardé » ton coin…).
 
 ### Lieux
 
@@ -23,7 +23,7 @@ La marchandise que tu portes. Un stock vide, c'est une bonne journée (tout vend
 
 - **Tonton Gros Prix** : le grossiste d'Adjamé. Fait crédit à tout le monde, mais connaît le numéro de ta maman
 - **Petit Lion** : ton concurrent du carrefour. Vend la même chose que toi, à 25 F de moins, juste pour t'énerver
-- **Les agents de la mairie** : leur camion arrive toujours quand tu viens de tout déballer
+- **Tantie Banane** : la doyenne du carrefour. Elle règle toutes les disputes depuis son tabouret, avec une banane comme marteau de juge
 - **Madame 4x4** : la cliente en grosse voiture. Elle négocie 100 F sur une bouteille d'eau
 - **Le monsieur qui démarre** : il prend la marchandise, le feu passe au vert, il part. Tu cours encore
 - **Ton cousin Bakary** : il garde ton coin quand tu manges. Il vend aussi un peu ta marchandise. Pour lui
@@ -32,7 +32,7 @@ La marchandise que tu portes. Un stock vide, c'est une bonne journée (tout vend
 
 - « Le feu est vert ! » crié par tous les djassamans en même temps
 - Petit Lion qui baisse ses prix dès que tu as un client
-- Le camion de la mairie qu'on entend arriver de loin, et tout le carrefour qui disparaît en 10 secondes
+- Tantie Banane qui tape son tabouret : « Le tribunal du carrefour est ouvert ! »
 - Ce que tu vends change selon le jour : quand il pleut, tu vends des parapluies ; quand les Éléphants jouent, tu vends des drapeaux
 
 ---
@@ -93,18 +93,18 @@ Situation : un monsieur prend 3 chargeurs, cherche son argent… le feu passe au
 
 👴🏾 Vieux Père : « Ceux qui partent sans payer pensent que la rue n'a pas de mémoire. La rue a toujours de la mémoire. »
 
-### 5. La mairie arrive !
-📍 Carrefour de la Riviera · 14h00
+### 5. Le cousin Bakary garde ton coin
+📍 Ton coin · 13h00
 
-Situation : « La mairie ! La mairie ! » Le camion des agents arrive. Tout le carrefour se met à courir. Ta marchandise est étalée par terre.
+Situation : tu pars manger un garba. Bakary garde ton coin. Quand tu reviens, il te reste 10 paquets sur 30. Bakary a un nouveau téléphone et il dit : « Les affaires ont bien marché, hein ! »
 
 | Choix | Effets | Résultat |
 |-------|--------|----------|
-| 🏃 Tout ramasser et fuir | ⚡ −30 · 📦 −5 | Tu as tout sauvé, sauf 5 paquets tombés en route. Un agent les a ramassés « pour la preuve » |
-| 🙏 Négocier avec les agents | 💰 −3 000 · ⭐ −10 | Ils sont repartis avec 3 000 F et ta bouteille d'eau. Tu restes. Jusqu'à la prochaine fois |
-| 🫥 Cacher la marchandise chez Tantie la vendeuse de bananes | 📦 ±0 · ⭐ +20 | Tantie a tout caché sous son pagne et a regardé les agents droit dans les yeux. Elle est la vraie patronne du carrefour |
+| 🧮 Faire les comptes devant tout le monde | ⚡ −10 · 💰 +3 000 · ⭐ +10 | Tantie Banane a ouvert le tribunal du carrefour. Bakary a remboursé en pleurant. Le téléphone, lui, il le garde |
+| 🤝 Le prendre comme associé | 📦 −20 · 💰 +2 000 · ⭐ +5 | Bakary vend vraiment bien ! Il a juste oublié que l'argent n'était pas à lui. Maintenant c'est écrit dans un cahier |
+| 😮‍💨 Laisser passer, c'est la famille | 📦 −20 · ⭐ −5 | Ce soir au village, on dit que tu as « aidé ton cousin à se lancer ». Ta maman est fière. Ton porte-monnaie pleure |
 
-👴🏾 Vieux Père : « La ville veut des trottoirs propres. Les djassamans veulent manger. Un jour il faudra que les deux se parlent. »
+👴🏾 Vieux Père : « La famille, c'est sacré. Mais la marchandise de Tonton Gros Prix aussi. »
 
 ### 6. Madame 4x4 veut le prix de gros
 📍 Ton coin · 15h00
@@ -119,18 +119,18 @@ Situation : une dame en 4x4 baisse sa vitre : « Le paquet de mouchoirs, c'est c
 
 👴🏾 Vieux Père : « À Babi, plus la voiture est grande, plus la négociation est longue. »
 
-### 7. Le déguerpissement
-📍 Ton coin · 7h00
+### 7. La guerre des prix avec Petit Lion
+📍 Carrefour de la Riviera · 9h00
 
-Situation : ce matin, il n'y a plus rien. Les bulldozers sont passés pendant la nuit. Ton parasol, ton tabouret, ton coin : tout a disparu. Une affiche dit « Opération trottoirs libérés ».
+Situation : Petit Lion a écrit sur un carton : « Mouchoirs 150 F ». Toi tu vends à 200. Il te regarde en souriant. La guerre est déclarée.
 
 | Choix | Effets | Résultat |
 |-------|--------|----------|
-| 🚶 Chercher un nouveau coin | ⚡ −25 · ⭐ −5 | Tu as trouvé une place à 500 m. Petit Lion est déjà là. Bien sûr |
-| 🎒 Devenir djassaman mobile | ⚡ −30 · 📦 −10 · 💰 +2 000 | Tu vends en marchant toute la journée. Tes jambes ont fait 15 km. Tu connais maintenant tout le quartier par cœur |
-| 🤝 S'associer avec les autres déguerpis | ⭐ +25 · ⚡ −10 | Vous avez créé l'association des djassamans de la Riviera. Président : toi. Budget : 0 F. Mais vous êtes ensemble |
+| 📉 Baisser à 125 F | 📦 −20 · 💰 +2 500 · ⭐ +5 | Petit Lion est passé à 100. Toi à 75. À midi, vous vendiez tous les deux à perte. Les clients étaient très contents |
+| 🎁 « Un paquet acheté, un bonbon offert » | 📦 −15 · 💰 +3 000 · ⭐ +15 | Les enfants dans les voitures ont obligé leurs parents à acheter chez toi. Le marketing, c'est la vie |
+| 🤝 Proposer une alliance à Petit Lion | ⭐ +20 · 💰 +2 000 | Même prix pour tout le monde, et chacun son côté du carrefour. Tantie Banane a validé l'accord avec sa banane |
 
-👴🏾 Vieux Père : « On peut raser un étal. On ne peut pas raser la débrouillardise. »
+👴🏾 Vieux Père : « Deux lions qui se battent, c'est le client qui mange. Deux lions ensemble, c'est eux qui mangent. »
 
 ### 8. Les Éléphants jouent ce soir !
 📍 Carrefour de la Riviera · 17h00

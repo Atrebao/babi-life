@@ -35,7 +35,7 @@ const g = (gars, go) => (player.gender === "go" ? go : gars);
 const INTRO = [
   `Ehhh${NBSP}! On dit quoi${NBSP}? Bienvenue à Babi, la ville où même le soleil arrive en retard à cause des embouteillages.`,
   `Moi c'est Vieux Père Ali. 40 ans à Yop. Je connais tous les maquis, tous les gbakas… et même les nids de poule par leur prénom.`,
-  `Avant de te lâcher dans Babi, faut qu'on fasse ta carte d'identité. Et c'est gratuit hein, pas besoin de tchoko${NBSP}!`,
+  `Avant de te lâcher dans Babi, faut qu'on fasse ta carte d'identité. Et c'est gratuit hein, même pas besoin de photo${NBSP}!`,
 ];
 
 const tutorial = () => [

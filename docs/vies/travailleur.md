@@ -4,7 +4,7 @@
 
 ## L'univers
 
-Tu habites une chambre-salon à **Yopougon** et tu travailles dans un bureau au **Plateau**. Chaque jour, c'est la même course : l'embouteillage, le boss, la fin du mois qui commence le 10, et la famille qui croit que tu es devenu(e) ministre parce que tu portes une chemise repassée.
+Tu habites une chambre-salon à **Yopougon** et tu travailles dans un bureau au **Plateau**. Chaque jour, c'est la même course : l'embouteillage, le boss, la fin du mois qui commence le 10, et la famille qui croit que tu es devenu(e) grand(e) patron(ne) parce que tu portes une chemise repassée.
 
 ### Lieux
 

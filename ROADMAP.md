@@ -8,6 +8,7 @@ Le jeu reste **drôle avant tout**. L'humour ivoirien sert à montrer les réali
 
 - On parle comme à Babi : nouchi, expressions du quotidien, Vieux Père Ali comme narrateur
 - On se moque des situations, jamais d'une ethnie, d'une religion ou d'une personne réelle
+- **Aucun sujet sur l'État, la politique ou les autorités** (police, mairie, administration…). C'est un jeu : on reste sur le quotidien des gens
 - Avec les petits métiers (apprentis, djassamans…), on rit **avec** eux, pas **d'eux** : ce sont les débrouillards de Babi
 - Chaque choix a une conséquence drôle **et** une petite vérité (le conseil du Vieux Père)
 - Les textes s'accordent selon que le joueur est un gars ou une go
@@ -70,7 +71,7 @@ git push origin main --tags
 - `feat: prof absent après 2h d'attente`
 - `feat: TD à rendre vs délestage pendant les révisions`
 - `feat: cité U — chambre partagée, cotisation pour le gaz`
-- `feat: bourse qui tarde et budget garba de fin de mois`
+- `feat: la bourse tombe — économiser ou faire la fête ?`
 - `feat: polycopiés à acheter et photocopie du cours d'un camarade`
 - `feat: jour d'exam — réviser toute la nuit ou dormir ?`
 - Scénarios : [etudiant.md](docs/vies/etudiant.md)
@@ -89,8 +90,8 @@ git push origin main --tags
 - `feat: crier les destinations pour remplir le gbaka avant les autres`
 - `feat: « Y'a pas monnaie » — rendre la monnaie… ou pas`
 - `feat: client qui négocie le prix et client qui crie « À côté ! » au mauvais moment`
-- `feat: gnambros à la gare qui réclament leur part`
-- `feat: contrôle de police et tchoko`
+- `feat: Petit Ballo et le gbaka rival qui vole tes clients`
+- `feat: la grosse pluie — le gbaka qui devient bateau`
 - `feat: gbaka en panne, tout le monde descend pousser`
 - `feat: réveil à 4h30, dodo sur la banquette`
 - Scénarios : [apprenti.md](docs/vies/apprenti.md)
@@ -99,7 +100,7 @@ git push origin main --tags
 *Épisode : « Peux-tu tenir 7 jours à Abidjan ? » (défi pour les abonnés)*
 - `feat: game over si une jauge vitale tombe à 0 (Moyenne pour l'étudiant, Versement pour l'apprenti)`
 - `feat: compteur de jours et meilleur score par statut`
-- `feat: événements aléatoires (délestage, pluie, contrôle de police, panne de gbaka, grève)`
+- `feat: événements aléatoires (délestage, pluie, panne de gbaka, embouteillage monstre, visite surprise de la famille)`
 - `feat: carte bilan à partager (capture pour TikTok)`
 - `feat: sauvegarde automatique de la partie`
 
@@ -123,8 +124,8 @@ Trois vies jouables (travailleur, étudiant, apprenti), une semaine à survivre,
 - `feat: mini-jeu — vendre dans l'embouteillage avant que le feu passe au vert`
 - `feat: client qui démarre sans payer quand ça roule`
 - `feat: choisir quoi vendre (eau, chargeurs, mouchoirs, cacahuètes…) selon la saison et la pluie`
-- `feat: la mairie qui confisque la marchandise`
-- `feat: déguerpissement — l'étal rasé du jour au lendemain`
+- `feat: le cousin Bakary qui « garde » ton coin`
+- `feat: la guerre des prix avec Petit Lion, arbitrée par Tantie Banane`
 - `feat: négocier « prix de gros » avec un client qui ne veut qu'un seul paquet`
 - Scénarios : [djassaman.md](docs/vies/djassaman.md)
 
