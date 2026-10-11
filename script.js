@@ -1,4 +1,4 @@
-const VERSION = "0.5.0";
+const VERSION = "0.6.0";
 const SPEED = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0.05 : 1;
 
 const LIVES = { travailleur: LIFE_TRAVAILLEUR, etudiant: LIFE_ETUDIANT };

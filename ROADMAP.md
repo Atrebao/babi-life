@@ -31,12 +31,12 @@ Format : `type: description courte` ([Conventional Commits](https://www.conventi
 | `docs` | README, ROADMAP, CHANGELOG |
 | `chore` | config, outillage, version |
 
-Fin de version (exemple pour la v0.6.0) :
+Fin de version (exemple pour la v0.7.0) :
 
 ```bash
-# 1. mettre VERSION = "0.6.0" dans script.js et compléter CHANGELOG.md
-git commit -am "chore: version 0.6.0"
-git tag -a v0.6.0 -m "v0.6.0 — Le jour et la nuit"
+# 1. mettre VERSION = "0.7.0" dans script.js et compléter CHANGELOG.md
+git commit -am "chore: version 0.7.0"
+git tag -a v0.7.0 -m "v0.7.0 — La vie d'apprenti gbaka"
 git push origin main --tags
 ```
 
@@ -49,15 +49,9 @@ git push origin main --tags
 | v0.3.0 | Vieux Père Ali, création du perso, tutoriel, vannes en nouchi | « Créez votre perso de Babi » |
 | v0.4.0 | Une journée complète : réunion, garba, kpakpato, maquis | « Ton perso doit survivre à toute une journée » |
 | v0.5.0 | La vie d'étudiant : bus plein, amphi bondé, prof absent, poly, cité U | « Étudiant à Babi : le mode le plus difficile du jeu » |
+| v0.6.0 | Le jour et la nuit, Yop by night, écran Bilan du jour | « J'ai ajouté le jour et la nuit à mon jeu » |
 
 ## 🔜 À venir
-
-### v0.6.0 — Le jour et la nuit
-*Épisode : « J'ai ajouté le jour et la nuit à mon jeu »*
-- `feat: horloge qui avance à chaque choix`
-- `style: ciel qui change matin / midi / soir / nuit`
-- `feat: lampadaires et fenêtres allumées la nuit`
-- `feat: écran bilan de fin de journée`
 
 ### v0.7.0 — La vie d'apprenti gbaka
 *Épisode : « Cette fois, c'est toi l'apprenti » (on passe de l'autre côté du gbaka de la v0.2)*

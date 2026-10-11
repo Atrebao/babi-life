@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.6.0 — Le jour et la nuit
+
+- L'heure fait changer la lumière : aube rose à 6h, matin doré, plein soleil à midi, coucher de soleil, nuit bleue
+- Le soleil monte et descend selon l'heure ; la nuit, la lune et les étoiles apparaissent
+- Yop la nuit : fenêtres allumées, lampadaires… dont un qui clignote
+- L'horloge défile pendant les transitions et après chaque choix, avec l'icône du moment (🌅 ☀️ 🌇 🌙)
+- Nouvelle scène de nuit pour le travailleur : le retour à Yop à 22h30 (marcher, woro-woro « tarif de nuit » ou rester au grin)
+- Nouvel écran « Bilan du jour » à capturer : titre du jour (👑 Boucantier, 💸 Fauché du mois, 🎓 Futur docteur…), jauges avant/après, récit de la journée heure par heure
+- La moyenne de l'étudiant monte un peu moins vite
+
 ## v0.5.0 — La vie d'étudiant
 
 - Nouveau : choisis ta vie sur la carte d'identité — 💼 Travailleur ou 🎓 Étudiant(e) (🔒 Apprenti et 🔒 Djassaman arrivent bientôt)
